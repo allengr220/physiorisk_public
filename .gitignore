@@ -1,0 +1,19 @@
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Raw/large data
+data/
+*.xpt
+*.pkl
+*.parquet
+*.feather
+*.h5
+*.h5ad
+
+# Local temporary outputs
+outputs/cache/
+outputs/tmp/
