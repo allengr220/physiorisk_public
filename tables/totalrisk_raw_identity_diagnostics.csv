@@ -1,0 +1,3 @@
+cohort,N,deaths,coef_HematologicStress_rounded,coef_RenalHepaticTurnover_rounded,rounded_raw_training_mean,rounded_raw_training_sd_ddof_1,max_abs_error,mean_abs_error,correlation,allclose_1e-8,atol,rtol,exact_raw_available,status
+train,13090,2520,0.433,0.235,-4.34250717042078e-18,0.2806779398439553,0.003461808928022947,0.00018621994509129776,0.9999999688048218,False,1e-08,1e-07,False,fails_historical_identity_rounded_coefficients
+test,6739,416,0.433,0.235,-4.34250717042078e-18,0.2806779398439553,0.003648747474812808,0.00018835655170512512,0.9999999765749282,False,1e-08,1e-07,False,fails_historical_identity_rounded_coefficients

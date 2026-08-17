@@ -1,0 +1,8 @@
+construction,parameter,estimate,standard_error,ci_95_low,ci_95_high,penalizer,log_likelihood,fit_cohort
+CalibratedTotalRisk,DemoRisk,1.0586578127615558,0.01647213818921484,1.0263730151623278,1.0909426103607838,0.0,-20327.879116598775,training_only
+CalibratedTotalRisk,PhysioRisk,0.3563514638575306,0.012795504455252477,0.3312727359612139,0.38143019175384724,0.0,-20327.879116598775,training_only
+PhysioRisk_standardization,training_mean_exact_raw,,,,,,,unavailable_raw_scale
+PhysioRisk_standardization,training_sd_ddof_1_exact_raw,,,,,,,unavailable_raw_scale
+PhysioRisk_rounded_reconstruction,training_mean_rounded_0.433_0.235,-4.34250717042078e-18,,,,,,training_covariates_only_approximation
+PhysioRisk_rounded_reconstruction,training_sd_ddof_1_rounded_0.433_0.235,0.2806779398439553,,,,,,training_covariates_only_approximation
+DemoRisk_offset_sensitivity,status,,,,,,,not_fitted_lifelines_has_no_offset_api
