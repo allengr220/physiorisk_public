@@ -1,0 +1,11 @@
+model,value_provenance,evaluation_cohort,censoring_distribution_cohort,training_N_for_censoring,test_N,horizon_months,Uno_C_IPCW_truncated_at_horizon,cumulative_dynamic_AUC_IPCW,implementation,diagnostic_only
+DemoRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,60,0.8225044663710361,0.8337675554650926,scikit-survival 0.28.0,True
+DemoRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,96,0.8268276750219302,0.853103812626574,scikit-survival 0.28.0,True
+PhysioRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,60,0.6540744092048758,0.6569392036825377,scikit-survival 0.28.0,True
+PhysioRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,96,0.6539731051344744,0.6769129171436119,scikit-survival 0.28.0,True
+CalibratedTotalRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,60,0.8389259697941713,0.8499256290219042,scikit-survival 0.28.0,True
+CalibratedTotalRisk,recomputed/revised,temporal_test,training (1999-2010),13090,6739,96,0.8430476492655705,0.8698335828123623,scikit-survival 0.28.0,True
+PhenoAge NCP,recomputed/revised,temporal_test,training (1999-2010),13090,6739,60,0.837847149853738,0.8503397579420375,scikit-survival 0.28.0,True
+PhenoAge NCP,recomputed/revised,temporal_test,training (1999-2010),13090,6739,96,0.8410370667612311,0.8749119485779695,scikit-survival 0.28.0,True
+PhenoAge NCP acceleration,recomputed/revised,temporal_test,training (1999-2010),13090,6739,60,0.6407642563795819,0.6545820351031016,scikit-survival 0.28.0,True
+PhenoAge NCP acceleration,recomputed/revised,temporal_test,training (1999-2010),13090,6739,96,0.6379253065566733,0.6980496610020251,scikit-survival 0.28.0,True

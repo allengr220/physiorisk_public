@@ -1,0 +1,8 @@
+flow_stage,count,value_provenance,reconstruction_status
+source analytic dataset retained,19829,recomputed/revised,reconstructable; earliest retained benchmark
+adult eligibility,19829,recomputed/revised,recoverable within retained benchmark; upstream exclusions unknown
+mortality linkage / usable survival outcome,19829,recomputed/revised,recoverable within retained benchmark
+required PhysioRisk biomarkers complete,19829,recomputed/revised,raw complete-case availability; frozen scored cohort retained all rows
+PhenoAge NCP biomarkers complete,19829,recomputed/revised,no-CRP proxy inputs before training-median imputation
+benchmark-aligned train cohort,13090,recomputed/revised,cycles 1999-2010
+benchmark-aligned temporal cohort,6739,recomputed/revised,cycles 2011-2016

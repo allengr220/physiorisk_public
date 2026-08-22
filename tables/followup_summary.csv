@@ -1,0 +1,3 @@
+cohort,value_provenance,N,deaths_total,followup_definition,reverse_KM_median_months,empirical_median_months,empirical_Q1_months,empirical_Q3_months,maximum_months,horizon_months,number_at_risk,deaths_observed_by_horizon,support_assessment
+temporal_test,recomputed/revised,6739,416,reverse_KM_median; empirical_IQR_and_max,74.0,71.0,53.0,90.0,111.0,60,4461,289,supported
+temporal_test,recomputed/revised,6739,416,reverse_KM_median; empirical_IQR_and_max,74.0,71.0,53.0,90.0,111.0,96,1137,410,supported_with_less_precise_tail

@@ -1,0 +1,21 @@
+model,value_provenance,cohort,horizon_months,risk_bin,N,deaths_total,mean_predicted_risk,KM_observed_risk,number_at_risk_at_horizon
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(1.0000000000000026e-05, 0.00308]",674,3,0.0024428361312688524,0.004554990644313306,484
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.00308, 0.00425]",674,5,0.0036497909226176767,0.007434062417480125,469
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.00425, 0.00581]",674,6,0.0049627867007975114,0.005934718100890302,481
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.00581, 0.00818]",674,5,0.006829087886525905,0.008380508668307196,475
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.00818, 0.0122]",674,15,0.009961380260514683,0.013219809509512404,457
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.0122, 0.0202]",673,14,0.015821375791568615,0.01681917337919825,464
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.0202, 0.0352]",674,24,0.02672601187730465,0.02688444161695014,443
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.0352, 0.0631]",674,47,0.04737182269408339,0.05144459505893839,432
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.0631, 0.137]",674,78,0.09243258524080551,0.07986313146075341,407
+CalibratedTotalRisk,recomputed/revised,temporal_test,60,"(0.137, 1.0]",674,219,0.25076366364709984,0.2526884763078431,349
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.0010799999999999998, 0.00635]",674,3,0.0050394154421192034,0.004554990644313306,145
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.00635, 0.00876]",674,5,0.00752462135910381,0.007434062417480125,131
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.00876, 0.012]",674,6,0.010224332205071416,0.01271327244633702,133
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.012, 0.0168]",674,5,0.014055064421183639,0.008380508668307196,108
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.0168, 0.0251]",674,15,0.020466543881039963,0.036321935523662585,132
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.0251, 0.0412]",673,14,0.03240125955335762,0.02660173579397007,99
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.0412, 0.0713]",674,24,0.05440198113720445,0.048921476127282704,123
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.0713, 0.126]",674,47,0.0953144730305805,0.10435621322528765,103
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.126, 0.263]",674,78,0.18109362970854395,0.19783744235925926,90
+CalibratedTotalRisk,recomputed/revised,temporal_test,96,"(0.263, 1.0]",674,219,0.4364955093979791,0.45446651707395647,73

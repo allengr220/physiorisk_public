@@ -1,0 +1,19 @@
+name: physiorisk
+channels:
+  - conda-forge
+dependencies:
+  - jupyter
+  - patsy
+  - pandas
+  - pyreadstat
+  - scikit-learn
+  - nbclient
+  - matplotlib
+  - pyarrow
+  - joblib
+  - python=3.11
+  - lifelines
+  - requests
+  - numpy
+  - nbformat
+  - scikit-survival

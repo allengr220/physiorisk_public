@@ -1,0 +1,6 @@
+model,value_provenance,cohort,N,deaths,time_transform,test_statistic,p_value,material_violation_flag,flag_rule,cox_convergence_warning,scaled_residual_region_summary
+DemoRisk,recomputed/revised,temporal_test,6739,416,rank,2.925210348304394,0.0872058592414256,False,p<0.01 (prespecified descriptive flag; no multiplicity adjustment),none,early_0_36m: mean=-0.087; middle_37_72m: mean=0.044; late_73m_plus: mean=0.099
+PhysioRisk,recomputed/revised,temporal_test,6739,416,rank,2.466845608792537,0.116271058108972,False,p<0.01 (prespecified descriptive flag; no multiplicity adjustment),none,early_0_36m: mean=-0.035; middle_37_72m: mean=0.013; late_73m_plus: mean=0.052
+CalibratedTotalRisk,recomputed/revised,temporal_test,6739,416,rank,16.539454545261666,4.76482293926626e-05,True,p<0.01 (prespecified descriptive flag; no multiplicity adjustment),none,early_0_36m: mean=-0.177; middle_37_72m: mean=0.108; late_73m_plus: mean=0.161
+HematologicStress,recomputed/revised,temporal_test,6739,416,rank,3.852417044666887,0.0496743570904767,False,p<0.01 (prespecified descriptive flag; no multiplicity adjustment),none,
+RenalHepaticTurnover,recomputed/revised,temporal_test,6739,416,rank,4.3039244366853735,0.0380245325079017,False,p<0.01 (prespecified descriptive flag; no multiplicity adjustment),none,

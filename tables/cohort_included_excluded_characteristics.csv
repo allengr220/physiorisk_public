@@ -1,0 +1,3 @@
+group,value_provenance,N,age_mean,age_SD,female_percent,deaths_N,deaths_percent,median_followup_months
+common_complete_case,recomputed/revised,19829,47.00938020071612,19.050301124426955,50.64299762973423,2936,14.806596399213273,124.0
+excluded_for_any_required_biomarker_missing,recomputed/revised,0,,,,0,,
