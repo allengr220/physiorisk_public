@@ -29,3 +29,10 @@ Pending:
 ## Release principle
 
 The submitted manuscript and model remain frozen during repository consolidation. Scientific revisions and new analyses require a separate sprint.
+## 2026-08-23 — Sprint 3C completed
+
+Commit: 5546635
+
+Completed public-pipeline provenance repair. Notebook 02 was replaced with the recovered no-CRP cohort builder. Notebook 04 is confirmed as the scored PhysioRisk parquet producer. Notebook 05 now explicitly exports both `test_phenoage_compare_outputs.parquet` and the aggregate comparison CSV. Top-level duplicate notebooks were removed. Pipeline audit result is `PASS_WITH_EXTERNAL_ARTIFACTS`.
+
+No datasets, model binaries, or raw NHANES files were committed. Remaining provenance gaps are standalone Table 1 and the optional ablation branch.
