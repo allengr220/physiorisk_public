@@ -29,20 +29,30 @@ notebooks/
   05_physiorisk_model_validation.ipynb
   06_physiorisk_figures.ipynb
   07_ablation_analysis_optional.ipynb
+
+  # Supplemental post-review notebooks
+  07_totalrisk_reconstruction.ipynb
   08_validation_v2.ipynb
   09_cohort_comparator_sensitivity.ipynb
 
 tables/
   README.md
 
+data/
+  README.md
+  ARTIFACT_MANIFEST.tsv
+
 docs/
   NOTEBOOK_ORDER.md
   ARTIFACT_PROVENANCE.md
+  EXPECTED_ARTIFACTS.md
   PIPELINE_AUDIT.md
   PIPELINE_GRAPH.md
   REVIEWER_RESPONSE_MATRIX.md
+  SOURCE_NOTEBOOK_PROVENANCE_AUDIT.md
   SPRINT3_GAP_ANALYSIS.md
   SPRINT3_SUMMARY.md
+  SPRINT3C_SUMMARY.md
 
 MODEL_LOCK.md
 DATA_SOURCES.md
@@ -50,7 +60,8 @@ STATUS.md
 CITATION.cff
 LICENSE
 eof
-- `notebooks/` — seven canonical notebooks in dependency order, followed by two supplemental revision notebooks
+- `notebooks/` — six direct manuscript-pipeline notebooks, one optional historical ablation notebook, and three supplemental post-review notebooks
+- `data/` — documentation and manifest only; large participant-level artifacts remain external
 - `tables/` — committed validation, calibration, diagnostic, cohort, and sensitivity outputs
 - `docs/` — notebook order, artifact provenance, pipeline audit, and reviewer-readiness assessment
 - `MODEL_LOCK.md` — frozen model specification
@@ -64,7 +75,9 @@ See `docs/NOTEBOOK_ORDER.md`.
 
 ## Data
 
-This project uses publicly available NHANES data and NHANES-linked mortality follow-up files. Raw NHANES data are not included in this repository. See `DATA_SOURCES.md`.
+This project uses publicly available NHANES data and NHANES-linked mortality follow-up files. Raw NHANES data are not included in this repository. See `DATA_SOURCES.md` and `data/ARTIFACT_MANIFEST.tsv`.
+
+Canonical documentation uses manuscript terms **DemoRisk**, **PhysioRisk**, **TotalRisk**, **PhenoAge NCP**, and **PhenoAge NCP acceleration**. Frozen notebook/data identifiers retain historical names such as `BaselineRisk`, `PhysioRisk_2axis`, `TotalRisk_2axis`, `PhenoAge_noCRP_proxy`, and `PhenoAgeAccel`; these identifiers are documented rather than renamed.
 
 ## Model lock
 

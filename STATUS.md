@@ -20,8 +20,8 @@ Completed:
 
 Pending:
 - Insert final Research Square DOI in README, STATUS, CITATION, and manuscript references
-- Resolve the notebook 01/02 dataset-name and year-window mismatch without changing historical analyses
-- Supply or reproducibly build the no-CRP benchmark and frozen baseline/model artifacts
+- Inventory/export the external Google Drive/MyDrive artifacts and record hashes
+- Publicly provision or reproducibly build the no-CRP benchmark and frozen baseline/model artifacts
 - Replace private Colab paths with a documented public data-location mechanism in a future reproducibility sprint
 - Add exact frozen residualization, axis-standardization, and physiology-model parameters
 - Push repository to GitHub

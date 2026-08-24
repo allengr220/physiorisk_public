@@ -19,10 +19,9 @@
 
 ## 3. Remaining repository issues
 
-- Notebook 01 writes a 1999–2016 dataset, while notebook 02 reads a differently named 1999–2018 dataset.
-- Notebook 02 follows an older CRP-complete branch and does not produce `benchmark_levine_no_crp_cohort.parquet` for notebook 03.
+- Sprint 3C resolved the former notebook 01/02 mismatch by installing the recovered no-CRP cohort builder as notebook 02.
 - Canonical parquets, the frozen DemoRisk pickle/metadata, exact two-axis transformation state, and several submitted table exports are not committed.
-- Notebook 06 requires `test_phenoage_compare_outputs.parquet`, which has no canonical producer.
+- Notebook 05 now has a verified producer cell for `test_phenoage_compare_outputs.parquet`; the artifact remains external in MyDrive.
 - Notebooks retain private absolute Colab/Google Drive paths.
 - Notebook 07 ablation depends on unavailable older v1/v2/v3 scored artifacts and is not demonstrably an ablation of the submitted two-axis model.
 - The verbatim BMC decision letter/reviewer reports are absent, so the response matrix uses the consolidated reviewer questions documented by Sprint 2 and does not invent reviewer numbering or quotations.
@@ -37,7 +36,7 @@ New computation is still needed for a complete source-to-analysis cohort flow, v
 
 ## 6. Canonical public-artifact assessment
 
-**Not yet fully suitable as the canonical self-contained reproducibility artifact.** It is now substantially more suitable as the canonical audit and provenance record: the notebook sequence is explicit, major artifacts are mapped, existing reviewer coverage is identified, and unresolved gaps are visible. A clean clone still cannot reproduce the analysis end to end, so public claims should describe it as an auditable but incomplete reproducibility package until the pipeline failures in `PIPELINE_AUDIT.md` are resolved.
+**Suitable as the canonical auditable code/provenance artifact, but not a self-contained data bundle.** Sprint 3C completed the direct notebook 01–06 producer graph. A clean clone still requires external Google Drive/MyDrive artifacts, so the correct audit classification is `PASS_WITH_EXTERNAL_ARTIFACTS`, not fully self-contained reproduction.
 
 ## Existing coverage checklist
 
@@ -55,4 +54,4 @@ New computation is still needed for a complete source-to-analysis cohort flow, v
 | Temporal validation | FOUND | `notebooks/05_physiorisk_model_validation.ipynb`, `notebooks/08_validation_v2.ipynb`, `tables/validation_v2.csv`, `tables/followup_summary.csv`. Internal temporal, not external. |
 | Ablation analyses | PARTIALLY FOUND | `notebooks/07_ablation_analysis_optional.ipynb` contains code, but outputs and required v1/v2/v3 inputs are absent and lineage differs from the submitted two-axis model. |
 | Notebook provenance | FOUND | `docs/ARTIFACT_PROVENANCE.md`, `docs/PIPELINE_AUDIT.md`, and `docs/PIPELINE_GRAPH.md`; provenance gaps are explicitly labeled. |
-| Reproducibility documentation | PARTIALLY FOUND | README, data/model docs, environment, provenance, and audit now exist; missing inputs, private paths, and broken handoffs prevent end-to-end reproducibility. |
+| Reproducibility documentation | FOUND | README, data/model docs, environment, provenance audit, artifact manifest, and a complete direct producer graph now exist; external artifacts and private paths still limit clean-clone execution. |

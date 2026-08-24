@@ -13,7 +13,7 @@ This audit is tied to repository commit `17c1d33` and the six submitted-analysis
 1. **FACT** — `notebooks/01_nhanes_extended_dataset_builder.ipynb` downloads and harmonizes NHANES cycle files, merges the 2019 public linked-mortality fixed-width files by `SEQN`, limits survival analysis to 1999–2016, and writes `nhanes_1999_2016_extended_mortality_model_dataset.parquet`. The output is not committed.
 2. **FACT** — the aligned validation path uses training cycles 1999–2010 (implemented as `cycle_start_year <= 2009` in notebook 02 and as `<= 2010` in notebook 03, equivalent for biennial cycle start years) and temporal-test cycles 2011–2016 (`>= 2011`).
 3. **FACT** — `notebooks/03_demographic_risk_model.ipynb` consumes `benchmark_levine_no_crp_cohort.parquet`, fits the frozen demographic model on training data, and writes baseline-scored train/test parquet files plus a model pickle and metadata JSON. None is committed.
-4. **UNKNOWN** — the producer of `benchmark_levine_no_crp_cohort.parquet` is absent. Notebook 02 builds a different CRP-complete benchmark and therefore is not that producer.
+4. **HISTORICAL UNKNOWN, RESOLVED IN SPRINT 3C** — at the audited Sprint 1 commit, the producer of `benchmark_levine_no_crp_cohort.parquet` was absent and notebook 02 contained a different CRP-complete benchmark. Sprint 3C recovered and installed `benchmark_levine_no_crp_cohort_builder.ipynb` as public notebook 02.
 5. **FACT** — the historical `physiorisk_2axis_v1_{train,test}_scored_from_frozen_baseline_levinenocrp.parquet` files are available locally outside Git and are now represented by producer code in `notebooks/04_physiorisk_scoring.ipynb`; its frozen baseline inputs and exact fitted model artifacts remain uncommitted.
 6. **FACT** — `notebooks/05_physiorisk_model_validation.ipynb` constructs the PhenoAge no-CRP proxy and its acceleration, then evaluates all five submitted Table 2 scores. Its embedded output is the direct producer trace available for Table 2.
 7. **FACT** — `notebooks/06_physiorisk_figures.ipynb` reads the same scored test parquet and the table exported by notebook 05 to produce Figure 2; it does not fit scores.
@@ -24,7 +24,7 @@ This audit is tied to repository commit `17c1d33` and the six submitted-analysis
 
 - **FACT** — model: Cox PH with `cr(RIDAGEYR, df=4) + C(RIAGENDR)`, duration `PERMTH_INT`, event `MORTSTAT`, `penalizer=0.01`, `l1_ratio=0.0`; fit on training only and frozen.
 - **FACT** — notebook 03 creates a Patsy design with `formula + " - 1"`, fits lifelines `CoxPHFitter`, and defines `BaselineRisk = predict_log_partial_hazard(design)`. The manuscript and figures relabel `BaselineRisk` as DemoRisk.
-- **DISCREPANCY (FACT)** — notebook 02's older benchmark path uses sklearn `SplineTransformer(n_knots=5, degree=3, include_bias=False)` rather than the manuscript/Patsy natural cubic spline `cr(age, df=4)`. It is not the Table 2 path.
+- **HISTORICAL DISCREPANCY (FACT)** — notebook 02 at the audited Sprint 1 commit used sklearn `SplineTransformer(n_knots=5, degree=3, include_bias=False)` rather than the manuscript/Patsy natural cubic spline `cr(age, df=4)`. Sprint 3C replaced that public slot with the recovered no-CRP cohort builder; the older path remains outside the Table 2 lineage.
 - **UNKNOWN** — fitted DemoRisk coefficients and design knots are only in the missing pickle/design artifact and are not printed in the checked-in notebook output.
 
 ### Biomarker residualization and axes

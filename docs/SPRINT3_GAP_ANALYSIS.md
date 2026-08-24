@@ -39,4 +39,4 @@ These analyses should be reported rather than rerun.
 
 ## Repository work required before new computation
 
-Some gaps are prerequisites rather than analyses: align the notebook 01/02 dataset contract, recover the producer of `benchmark_levine_no_crp_cohort.parquet`, commit or publicly provision canonical inputs, recover exact frozen model/transformation state, and replace private Colab paths with documented configuration. Resolving those issues must preserve the frozen historical analysis and should occur before attempting upstream sensitivity work.
+Sprint 3C resolved the notebook 01/02 contract and recovered the producer of `benchmark_levine_no_crp_cohort.parquet`. Remaining prerequisites are to inventory/export the canonical Google Drive/MyDrive artifacts, recover exact frozen model/transformation state, and replace private Colab paths with documented configuration in a later non-scientific reproducibility sprint. These steps must preserve the frozen historical analysis and precede upstream sensitivity work.

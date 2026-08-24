@@ -6,15 +6,11 @@ Public NHANES files + linked mortality
                  v
 01 NHANES extended dataset builder
                  |
-                 | writes 1999-2016 dataset
-                 X  filename/year mismatch: notebook 02 reads 1999-2018
-                 |
+                 | nhanes_1999_2016_extended_mortality_model_dataset.parquet
                  v
-02 Benchmark dataset builder (older CRP-complete branch)
+02 Levine no-CRP benchmark cohort builder
                  |
-                 X  does not produce benchmark_levine_no_crp_cohort.parquet
-                 |
-       [external verified no-CRP benchmark]
+                 | benchmark_levine_no_crp_cohort.parquet
                  |
                  v
 03 Demographic risk model
@@ -34,7 +30,8 @@ Public NHANES files + linked mortality
                  |
                  v
 05 PhysioRisk model validation --------> submitted Table 2 CSV
-                 |                                |
+                 |                     +--> row-level PhenoAge NCP/
+                 |                          acceleration parquet
                  +----------------+---------------+
                                   v
                          06 Manuscript figures
@@ -67,4 +64,4 @@ reconstruction tables             |                    |
                                          comparator tables
 ```
 
-`X` marks a broken canonical handoff. External verified artifacts are recorded with hashes in `ARTIFACT_PROVENANCE.md`; they are not present in a clean clone.
+The direct 01–06 producer graph is complete. Large intermediate artifacts remain in Google Drive/MyDrive rather than Git and are inventoried in `data/ARTIFACT_MANIFEST.tsv`. The optional ablation branch is historical/supporting, not a required manuscript-pipeline stage.

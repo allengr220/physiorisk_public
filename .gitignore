@@ -5,8 +5,10 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Raw/large data
-data/
+# Raw/large data (keep only the public manifest/documentation)
+data/*
+!data/README.md
+!data/ARTIFACT_MANIFEST.tsv
 *.xpt
 *.pkl
 *.parquet

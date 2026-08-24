@@ -21,6 +21,8 @@ Raw NHANES files are not included in this repository.
 
 Users should obtain NHANES public-use data and linked mortality files directly from CDC/NCHS sources and run the canonical notebooks in the documented order.
 
+Expected derived artifacts, producer notebooks, consumers, and Google Drive/MyDrive storage locations are inventoried in `data/ARTIFACT_MANIFEST.tsv`. Large participant-level artifacts are intentionally excluded from Git.
+
 ## Reproducibility note
 
 The canonical notebooks document the analytic workflow used for the submitted manuscript, including cohort construction, demographic-risk modeling, physiological-risk modeling, benchmark comparison, and figure/table generation.
