@@ -1,0 +1,29 @@
+# Reviewer response matrix
+
+## Source and status rules
+
+The BMC decision letter and verbatim reviewer reports are not checked into this repository. This matrix conservatively reconstructs the reviewer issues documented in `docs/revision/S2_VALIDATION_FINDINGS.md` and the repository's post-BMC work. Reviewer labels therefore use “BMC reviewers (consolidated)” rather than assigning unsupported reviewer numbers or quotations.
+
+`SATISFIED` is used only when a committed output directly addresses the issue. `OPEN` means manuscript work, missing provenance, or new computation remains. A satisfied analysis can still require an open manuscript change.
+
+| Reviewer | Issue | Category | Required action | Notebook(s) | Manuscript section(s) | Current status | Priority |
+|---|---|---|---|---|---|---|---|
+| BMC reviewers (consolidated) | Explain model intent and distinguish decomposition from a replacement mortality score | writing | Clarify framing and limitations without expanding claims | 03–06 | Abstract; Introduction; Discussion | OPEN | High |
+| BMC reviewers (consolidated) | Document the complete cohort flow from source NHANES to analysis cohort | documentation | Recover upstream exclusion counts and produce a complete flow artifact | 01–03; 09 | Methods—Study population; Results; flow figure/table | OPEN | High |
+| BMC reviewers (consolidated) | Report missing biomarker data by cycle and handling | documentation | Incorporate retained-cohort results; explicitly state that upstream missingness is unavailable | 09 | Methods—Missing data; Results; Limitations | OPEN | High |
+| BMC reviewers (consolidated) | Compare included and excluded participants | new analysis | Recover pre-benchmark population and compute valid included/excluded characteristics | 01–03; new notebook work | Methods; Results; supplementary table | OPEN | High |
+| BMC reviewers (consolidated) | Apply comparable missing-data rules to PhysioRisk and PhenoAge NCP | reanalysis | Report the committed common-complete-case/no-op imputation sensitivity and its scope | 09 | Methods—Comparators/Missing data; Results | SATISFIED | High |
+| BMC reviewers (consolidated) | Quantify uncertainty for discrimination and direct score contrasts | validation | Report bootstrap C-index intervals and paired contrasts | 08 | Statistical analysis; Results; Table 2/supplement | SATISFIED | High |
+| BMC reviewers (consolidated) | Test proportional-hazards assumptions | methodology | Report PH tests and interpret the detected TotalRisk violation | 08 | Statistical analysis; Results; Discussion | SATISFIED | High |
+| BMC reviewers (consolidated) | Provide Schoenfeld residual evidence, not only a global test | validation | Report residual pattern and diagnostic log-time interaction | 08 | Results; supplement; Discussion | SATISFIED | High |
+| BMC reviewers (consolidated) | Assess absolute-risk calibration | validation | Report 5/8-year calibration-in-the-large, fixed-horizon intercept/slope, plots, and Brier scores | 08 | Statistical analysis; Results; calibration figure/table | SATISFIED | High |
+| BMC reviewers (consolidated) | Quantify uncertainty for horizon-specific calibration slopes | new analysis | Bootstrap fixed-horizon intercepts/slopes if required for the response | New validation notebook work | Statistical analysis; Results; supplement | OPEN | Medium |
+| BMC reviewers (consolidated) | Demonstrate temporal validation and describe follow-up support | validation | State split years, sample/event counts, risk sets, and eight-year tail limitation | 03; 05; 08 | Methods—Validation; Results; Limitations | SATISFIED | High |
+| BMC reviewers (consolidated) | Avoid presenting temporal validation as external validation | writing | Correct terminology consistently | 03; 05; 08 | Abstract; Methods; Results; Discussion | OPEN | High |
+| BMC reviewers (consolidated) | Demonstrate incremental information beyond DemoRisk | validation | Report paired C-index contrast and training-only coefficient evidence conservatively | 07_totalrisk_reconstruction; 08 | Results; Discussion | SATISFIED | High |
+| BMC reviewers (consolidated) | Compare TotalRisk fairly with PhenoAge | validation | Report the non-significant paired contrast; identify comparator as no-CRP proxy | 05; 08–09 | Methods—Comparator; Results; Discussion | SATISFIED | High |
+| BMC reviewers (consolidated) | Resolve the submitted non-converged PhysioRisk HR | methodology | Replace reliance on the historical non-converged estimate with the convergence-controlled diagnostic, preserving provenance | 07_totalrisk_reconstruction; 08 | Statistical analysis; Results; Table 2; Limitations | SATISFIED | High |
+| BMC reviewers (consolidated) | Justify TotalRisk recombination and scale | methodology | Rewrite mathematical interpretation using the frozen training-only calibration evidence; do not alter coefficients in this sprint | 07_totalrisk_reconstruction | Methods—Risk decomposition; Results; Discussion | OPEN | High |
+| BMC reviewers (consolidated) | Provide ablation/sensitivity evidence for component choices | new analysis | First assess whether the older optional v1/v2/v3 ablation matches the submitted two-axis specification; compute a submitted-model ablation only if it does not | 07_ablation_analysis_optional; new notebook work likely | Methods; Results; supplement | OPEN | Medium |
+| BMC reviewers (consolidated) | Supply reproducible code, data lineage, and frozen parameters | documentation | Resolve missing producer/input artifacts and public path/configuration issues | 01–09 | Data/code availability; Methods; supplement | OPEN | High |
+| BMC reviewers (consolidated) | Validate generalizability outside the internal temporal NHANES split | new analysis | Perform external validation in an independent cohort if required and feasible | New notebook/data work | Methods; Results; Discussion | OPEN | Medium |

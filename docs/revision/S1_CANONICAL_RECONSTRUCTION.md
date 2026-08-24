@@ -14,9 +14,9 @@ This audit is tied to repository commit `17c1d33` and the six submitted-analysis
 2. **FACT** — the aligned validation path uses training cycles 1999–2010 (implemented as `cycle_start_year <= 2009` in notebook 02 and as `<= 2010` in notebook 03, equivalent for biennial cycle start years) and temporal-test cycles 2011–2016 (`>= 2011`).
 3. **FACT** — `notebooks/03_demographic_risk_model.ipynb` consumes `benchmark_levine_no_crp_cohort.parquet`, fits the frozen demographic model on training data, and writes baseline-scored train/test parquet files plus a model pickle and metadata JSON. None is committed.
 4. **UNKNOWN** — the producer of `benchmark_levine_no_crp_cohort.parquet` is absent. Notebook 02 builds a different CRP-complete benchmark and therefore is not that producer.
-5. **FACT** — the historical `physiorisk_2axis_v1_{train,test}_scored_from_frozen_baseline_levinenocrp.parquet` files are available locally outside Git and are the inputs consumed by notebook 04. **UNKNOWN** — their producer code/model remains absent. Notebook 04 explicitly says it does not rebuild PhysioRisk.
-6. **FACT** — `notebooks/04_physiorisk_model_validation.ipynb` constructs the PhenoAge no-CRP proxy and its acceleration, then evaluates all five submitted Table 2 scores. Its embedded output is the direct producer trace available for Table 2.
-7. **FACT** — `notebooks/05_physiorisk_figures.ipynb` reads the same scored test parquet and the table exported by notebook 04 to produce Figure 2; it does not fit scores.
+5. **FACT** — the historical `physiorisk_2axis_v1_{train,test}_scored_from_frozen_baseline_levinenocrp.parquet` files are available locally outside Git and are now represented by producer code in `notebooks/04_physiorisk_scoring.ipynb`; its frozen baseline inputs and exact fitted model artifacts remain uncommitted.
+6. **FACT** — `notebooks/05_physiorisk_model_validation.ipynb` constructs the PhenoAge no-CRP proxy and its acceleration, then evaluates all five submitted Table 2 scores. Its embedded output is the direct producer trace available for Table 2.
+7. **FACT** — `notebooks/06_physiorisk_figures.ipynb` reads the same scored test parquet and the table exported by notebook 05 to produce Figure 2; it does not fit scores.
 
 ## Score definitions
 
@@ -48,12 +48,12 @@ This audit is tied to repository commit `17c1d33` and the six submitted-analysis
 ### TotalRisk
 
 - **FACT** — manuscript construction: `TotalRisk_original = DemoRisk + PhysioRisk_z`.
-- **FACT** — notebook 04 consumes `TotalRisk_2axis`; it does not construct it. Its embedded metrics agree with manuscript Table 2.
+- **FACT** — notebook 05 consumes `TotalRisk_2axis`; it does not construct it. Its embedded metrics agree with manuscript Table 2.
 - **FACT** — this mixes a native-scale Cox LP (DemoRisk) with a unit-SD physiology score. Consequently, the coefficient on the native raw physiological LP is implicitly `1 / sd_train(PhysioRisk_raw)`, not 1, and the composite is not generally the joint Cox LP claimed in the manuscript.
 
 ### PhenoAge NCP and acceleration
 
-- **FACT** — after training-median imputation of the eight biomarker inputs, notebook 04 defines:
+- **FACT** — after training-median imputation of the eight biomarker inputs, notebook 05 defines:
 
   `PhenoAge_NCP = -19.907 - 0.0336*LBXSAL + 0.0095*LBXSCR + 0.1953*log(LBXGLU) - 0.0120*LBXLYPCT + 0.0268*LBXMCV + 0.3306*LBXRDW + 0.0019*LBXSAPSI + 0.0554*LBXWBCSI + 0.0804*RIDAGEYR`.
 
@@ -63,11 +63,11 @@ This audit is tied to repository commit `17c1d33` and the six submitted-analysis
 
 ## Table 2 lineage
 
-- **FACT** — notebook 04 loads the missing scored train/test parquets, reconstructs both PhenoAge comparators, standardizes each evaluated predictor within the evaluated cohort, fits an unpenalized univariable Cox model, and reports C-index, HR per one actual cohort SD with 95% CI, p-value, and Pearson correlation with age.
+- **FACT** — notebook 05 loads the scored train/test parquets, reconstructs both PhenoAge comparators, standardizes each evaluated predictor within the evaluated cohort, fits an unpenalized univariable Cox model, and reports C-index, HR per one actual cohort SD with 95% CI, p-value, and Pearson correlation with age.
 - **FACT** — its temporal-test embedded output has `N=6,739`, `deaths=416` and matches manuscript Table 2 after rounding: DemoRisk 0.826876 / 3.735672; PhysioRisk 0.654110 / 2.771658; TotalRisk 0.839760 / 1.877467; PhenoAge NCP 0.841108 / 3.976118; acceleration 0.637857 / 1.432148 (C-index / HR per SD).
-- **DISCREPANCY (FACT)** — notebook 06 computes HR/SD with `penalizer=0.1`; notebook 04/Table 2 uses the default unpenalized Cox model. Notebook 06 is optional and is not the Table 2 producer.
+- **DISCREPANCY (FACT)** — notebook 07 computes HR/SD with `penalizer=0.1`; notebook 05/Table 2 uses the default unpenalized Cox model. Notebook 07 is optional and is not the Table 2 producer.
 - **DISCREPANCY (FACT)** — the manuscript calls the additive standardized construction a Cox log-risk recombination. This interpretation is mathematically unsupported unless its two component coefficients happen to equal one on those exact scales.
-- **DISCREPANCY (FACT)** — under current lifelines, notebook 04's unpenalized PhysioRisk HR/SD fit emits a Newton–Raphson non-convergence warning, hidden by its global warning suppression, and returns HR `2.771658`. A convergence-controlled fit of the identical standardized predictor returns log-HR about `0.32748` (HR about `1.3875`). The other Table 2 HR fits converge and are stable. Thus the manuscript PhysioRisk HR/SD is not a valid converged estimate even though its predictor was correctly standardized.
+- **DISCREPANCY (FACT)** — under current lifelines, notebook 05's unpenalized PhysioRisk HR/SD fit emits a Newton–Raphson non-convergence warning, hidden by its global warning suppression, and returns HR `2.771658`. A convergence-controlled fit of the identical standardized predictor returns log-HR about `0.32748` (HR about `1.3875`). The other Table 2 HR fits converge and are stable. Thus the manuscript PhysioRisk HR/SD is not a valid converged estimate even though its predictor was correctly standardized.
 - **FACT** — the revision comparison table preserves these as separate rows: `PhysioRisk_submitted` retains the historical Table 2 values, while `PhysioRisk_convergence_corrected` records the convergence-controlled re-evaluation. No historical value is overwritten.
 
 ## Local source-artifact audit (outside Git)

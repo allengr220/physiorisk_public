@@ -38,4 +38,4 @@ The mathematical diagnosis and leakage-safe training-only calibration are comple
 
 ## Interpretation guardrails
 
-No sensitivity construction has been ranked using temporal-test performance. The native raw-LP sum is prespecified in notebook 07. The DemoRisk-offset sensitivity is recorded as not fitted because lifelines does not expose a Cox offset parameter directly; implementing a custom partial likelihood solely to force that sensitivity was not considered “straightforward.”
+No sensitivity construction has been ranked using temporal-test performance. The native raw-LP sum is prespecified in `notebooks/07_totalrisk_reconstruction.ipynb`. The DemoRisk-offset sensitivity is recorded as not fitted because lifelines does not expose a Cox offset parameter directly; implementing a custom partial likelihood solely to force that sensitivity was not considered “straightforward.”

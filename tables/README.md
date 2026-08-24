@@ -1,13 +1,10 @@
 # Tables
 
-This directory will contain manuscript-linked tabular outputs for PhysioRisk.
+This directory contains manuscript-linked and post-review diagnostic outputs for PhysioRisk.
 
 Current status:
-- Benchmark and table outputs were generated during analysis in Colab/notebook workflows.
-- Canonical notebooks required to reproduce the tables are included in `notebooks/`.
-- Exported CSV/XLSX table files will be added in a later release pass.
+- Submitted benchmark outputs were generated in Colab/notebook workflows and are not all committed.
+- Sprint 1/2 reconstruction, validation, calibration, cohort, and sensitivity CSVs are committed here.
+- `notebooks/08_validation_v2.ipynb` and `notebooks/09_cohort_comparator_sensitivity.ipynb` display these outputs; `scripts/run_sprint2_validation.py` is their computational producer.
 
-Planned contents:
-- NHANES cycle/enrollment table
-- Final benchmark comparison table
-- Optional ablation/sensitivity table
+See `docs/ARTIFACT_PROVENANCE.md` for per-file lineage and status.
