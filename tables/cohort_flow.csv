@@ -1,8 +1,6 @@
-flow_stage,count,value_provenance,reconstruction_status
-source analytic dataset retained,19829,recomputed/revised,reconstructable; earliest retained benchmark
-adult eligibility,19829,recomputed/revised,recoverable within retained benchmark; upstream exclusions unknown
-mortality linkage / usable survival outcome,19829,recomputed/revised,recoverable within retained benchmark
-required PhysioRisk biomarkers complete,19829,recomputed/revised,raw complete-case availability; frozen scored cohort retained all rows
-PhenoAge NCP biomarkers complete,19829,recomputed/revised,no-CRP proxy inputs before training-median imputation
-benchmark-aligned train cohort,13090,recomputed/revised,cycles 1999-2010
-benchmark-aligned temporal cohort,6739,recomputed/revised,cycles 2011-2016
+flow_stage,count,deaths,population_definition,producer
+original NHANES source cycles,92062,,"Nine public-use DEMO cycle files, 1999-2000 through 2015-2016",notebooks/01_nhanes_extended_dataset_builder.ipynb
+mortality eligible,53255,9104,ELIGSTAT == 1 and nonmissing PERMTH_INT/MORTSTAT after one-to-one SEQN linkage,notebooks/01_nhanes_extended_dataset_builder.ipynb
+biomarker-complete benchmark,19829,2936,Complete case for notebook 01 EXTENDED_16; notebook 02 eight-biomarker check removes no further rows,notebooks/01_nhanes_extended_dataset_builder.ipynb; notebooks/02_benchmark_dataset_builder.ipynb
+training cohort,13090,2520,Biomarker-complete benchmark with cycle_start_year <= 2010,notebooks/03_demographic_risk_model.ipynb
+temporal-validation cohort,6739,416,Biomarker-complete benchmark with cycle_start_year >= 2011,notebooks/03_demographic_risk_model.ipynb

@@ -1,0 +1,20 @@
+{
+  "producer": "notebooks/05_physiorisk_model_validation.ipynb",
+  "output": "/tmp/physiorisk-s3d-regeneration/outputs/physiorisk_vs_phenoage_aligned_comparison.csv",
+  "output_sha256": "57dc50f115b6981822a4282feccd311f85bbcd5bd876cda95cd3d7da115ceec4",
+  "output_rows": 10,
+  "test_rows": 5,
+  "train": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet",
+  "train_sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86",
+  "train_rows": 13090,
+  "test": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet",
+  "test_sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca",
+  "test_rows_input": 6739,
+  "submitted_rounding_checks": {
+    "C_index": true,
+    "HR_per_1SD": true,
+    "HR_95CI_low": true,
+    "HR_95CI_high": true,
+    "corr_age": true
+  }
+}

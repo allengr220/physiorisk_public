@@ -37,12 +37,12 @@ Paths below are repository-relative unless explicitly described as external. Not
 | `figures/Fig1.png`, `figures/Fig1.tiff` | `06_physiorisk_figures.ipynb` | Manuscript assembly outside notebooks | Figure 1, Kaplan–Meier survival by PhysioRisk and PhenoAge NCP acceleration quartiles | COMMITTED; notebook also exports PDF externally |
 | `figures/Fig2.png`, `figures/Fig2.tiff` | `06_physiorisk_figures.ipynb` | Manuscript assembly outside notebooks | Figure 2, temporal benchmark visualization | COMMITTED |
 | Manuscript Table 1 (embedded in `manuscript/PhysioRisk_BMC_MIDM_v2.{docx,pdf}`) | Manuscript assembly; source-cycle counts are not exported as a standalone table | Manuscript | Original NHANES cycle counts | COMMITTED only inside manuscript; no standalone provenance artifact |
-| `physiorisk_vs_phenoage_aligned_comparison.csv` | `05_physiorisk_model_validation.ipynb` | `06_physiorisk_figures.ipynb`; manuscript assembly | Submitted Table 2 benchmark values | PRODUCER VERIFIED / EXTERNAL GOOGLE DRIVE; embedded notebook output is also available |
+| `tables/physiorisk_vs_phenoage_aligned_comparison.csv` | `05_physiorisk_model_validation.ipynb`, re-executed by `scripts/run_s3d_table2_export.py` | `06_physiorisk_figures.ipynb`; manuscript assembly | Submitted Table 2 benchmark values | COMMITTED; SHA256 `57dc50f115b6981822a4282feccd311f85bbcd5bd876cda95cd3d7da115ceec4`; all submitted display-rounding checks pass |
 | `physiorisk_ablation_v1_metrics.csv`, `physiorisk_ablation_v1_cindex.csv`, `physiorisk_ablation_v1_hr.csv`, `physiorisk_ablation_v1_corr_age.csv` | `07_ablation_analysis_optional.ipynb` | Manuscript/supporting-material assembly outside notebooks | Optional ablation/sensitivity tables | GENERATED, NOT COMMITTED |
 
 ## Reconstruction, validation, and calibration outputs
 
-`scripts/run_sprint2_validation.py` is the computational producer of the Sprint 2 tables. Notebooks 08 and 09 are display/report notebooks, not their producer.
+`scripts/run_sprint2_validation.py` is the computational producer of the unchanged Sprint 2 validation tables. Sprint 3D replaced the three cohort diagnostics with upstream regenerations and re-exported the historical comparison as identified below. Notebooks 08 and 09 are display/report notebooks, not computational producers.
 
 | Filename | Producing code | Consuming notebook(s) | Manuscript/reviewer usage | Status |
 |---|---|---|---|---|
@@ -58,13 +58,13 @@ Paths below are repository-relative unless explicitly described as external. Not
 | `tables/followup_summary.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Follow-up and horizon support | COMMITTED |
 | `tables/calibration_fixed_horizons.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Calibration-in-the-large, intercept/slope, Brier scores | COMMITTED |
 | `tables/calibration_plot_data.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Five- and eight-year calibration plots/data | COMMITTED; plotted in notebook output, no standalone image |
-| `tables/cohort_flow.csv` | `scripts/run_sprint2_validation.py` | `09_cohort_comparator_sensitivity.ipynb` | Retained-benchmark flow | COMMITTED; upstream source flow remains unknown |
-| `tables/cohort_included_excluded_characteristics.csv` | `scripts/run_sprint2_validation.py` | Documentation | Retained-cohort inclusion comparison | COMMITTED; excluded group is empty because upstream exclusions predate the available cohort |
-| `tables/missingness_by_cycle.csv` | `scripts/run_sprint2_validation.py` | `09_cohort_comparator_sensitivity.ipynb` | Missingness by cycle | COMMITTED; limited to retained benchmark |
+| `tables/cohort_flow.csv` | `scripts/run_s3d_cohort_regeneration.py` using notebook 01 loader/rules and canonical split rules | Documentation | Source-to-analysis flow | COMMITTED; computationally reproduced from 92,062 source through 53,255 mortality eligible, 19,829 benchmark, and train/test splits |
+| `tables/cohort_included_excluded_characteristics.csv` | `scripts/run_s3d_cohort_regeneration.py` | Documentation | Upstream inclusion comparison | COMMITTED; 19,829 `EXTENDED_16`-complete included versus 33,426 excluded from mortality-eligible population |
+| `tables/missingness_by_cycle.csv` | `scripts/run_s3d_cohort_regeneration.py` | Documentation | Upstream missingness by cycle | COMMITTED; 53,255-person pre-complete-case mortality-eligible denominator, 9 cycles × 8 benchmark biomarkers |
 | `tables/comparator_sensitivity.csv` | `scripts/run_sprint2_validation.py` | `09_cohort_comparator_sensitivity.ipynb` | Complete-case/imputation comparator sensitivity | COMMITTED; imputation is a no-op in the retained complete cohort |
 
 ## Provenance limitations
 
-The direct notebook 01–06 producer graph is now resolved. Large/person-level artifacts and several small exports remain external in Google Drive/MyDrive rather than Git; this is an availability limitation, not an orphaned-producer failure. Remaining provenance gaps are the standalone source for manuscript Table 1 and the absence from WSL/Git of the exact frozen DemoRisk model/metadata and scoring metadata exports. Private absolute Colab paths also remain. No data were regenerated or scientific code rewritten in this sprint.
+The direct notebook 01–06 producer graph is resolved. Sprint 3D computationally regenerated the notebook-01 survival/extended populations, upstream cohort diagnostics, and historical Table 2 comparison; participant-level artifacts remain external to Git under the data policy. The remaining Table 1 gap is limited to the exact external pages supporting its three examined counts. The exact frozen DemoRisk model/metadata and scoring metadata exports remain outside Git, and private absolute Colab paths remain.
 
 The older 1999–2018 CRP-complete/three-axis notebook formerly copied as notebook 02 remains documented in `SOURCE_NOTEBOOK_PROVENANCE_AUDIT.md` as historical and is not part of the repaired canonical chain. See `data/ARTIFACT_MANIFEST.tsv` for the complete storage/status inventory.

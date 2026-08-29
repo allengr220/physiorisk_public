@@ -1,0 +1,49 @@
+[
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/cohort_flow.csv",
+    "sha256": "9983a379e11593a7edd615650d07ca02c98500febfc0c1d10a261f8b663388ca",
+    "bytes": 870,
+    "rows": 5
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/cohort_included_excluded_characteristics.csv",
+    "sha256": "ff4ad8f86bbaa949d9696778216ba3db5fc24ca9b5bfb4a0f7d46796496634b3",
+    "bytes": 423,
+    "rows": 2
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/missingness_by_cycle.csv",
+    "sha256": "5b84e82daf3d0bd023666a2e8bd7b2dd9aa1f88ac87f00f19b7f571480833a7c",
+    "bytes": 6685,
+    "rows": 72
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/nhanes_1999_2016_extended_mortality_model_dataset.parquet",
+    "sha256": "a8ad4dca999ad1563ab5885a3c59d6db671f4aa3eb3c14647c89f793d9141497",
+    "bytes": 820880,
+    "rows": 19829
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/nhanes_1999_2016_survival_master.parquet",
+    "sha256": "1ab9d6347b9e8b7eba77e9a3ffbcd0a3c4d7910575f3b0e0826dd4582c746fc4",
+    "bytes": 2008913,
+    "rows": 53255
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/physiorisk_vs_phenoage_aligned_comparison.csv",
+    "sha256": "57dc50f115b6981822a4282feccd311f85bbcd5bd876cda95cd3d7da115ceec4",
+    "bytes": 1491,
+    "rows": 10
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/physiorisk_vs_phenoage_aligned_comparison.metadata.json",
+    "sha256": "dd3432ec4ea6b2beec647f31d119fa6fc62fdd87b9ccd3b7acd009c1633df114",
+    "bytes": 941
+  },
+  {
+    "path": "/tmp/physiorisk-s3d-regeneration/outputs/s3d_input_manifest.csv",
+    "sha256": "3ef0f468493aea6d2205f7d023858308ee6318b272d904b5323217b99e36d9d5",
+    "bytes": 20674,
+    "rows": 101
+  }
+]
