@@ -1,0 +1,4 @@
+contrast,model_A,model_B,value_provenance,cohort,point_C_index_difference_A_minus_B,bootstrap_95CI_low,bootstrap_95CI_high,proportion_bootstrap_difference_above_zero,bootstrap_replicates,bootstrap_seed
+CalibratedTotalRisk vs DemoRisk,CalibratedTotalRisk,DemoRisk,recomputed/revised,temporal_test,0.01627737518368,0.011092164741292298,0.021987202704805038,1.0,2000,20260821
+CalibratedTotalRisk vs PhenoAge NCP,CalibratedTotalRisk,PhenoAge NCP,recomputed/revised,temporal_test,0.0020450249823416033,-0.0032582201370468353,0.007479917023818927,0.776,2000,20260821
+PhysioRisk_convergence_corrected vs PhenoAge NCP acceleration,PhysioRisk_convergence_corrected,PhenoAge NCP acceleration,recomputed/revised,temporal_test,0.016252248596866248,-0.0004944792522100116,0.03285068241097699,0.97,2000,20260821

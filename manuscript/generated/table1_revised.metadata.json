@@ -1,0 +1,19 @@
+{
+  "description": "Descriptive Table 1 regenerated without model fitting from SHA256-locked scored parquets.",
+  "inputs": {
+    "development": {
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86",
+      "rows": 13090
+    },
+    "temporal_validation": {
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca",
+      "rows": 6739
+    }
+  },
+  "female_code": "RIAGENDR == 2",
+  "followup_units": "months",
+  "standard_deviation_ddof": 1,
+  "quantile_method": "pandas default linear interpolation"
+}
