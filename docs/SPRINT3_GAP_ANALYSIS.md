@@ -9,7 +9,7 @@ This classification is conservative and does not treat embedded notebook output,
 - Temporal-test discrimination with participant-level bootstrap 95% intervals (`tables/validation_v2.csv`).
 - Paired C-index contrasts for CalibratedTotalRisk versus DemoRisk and PhenoAge NCP, and PhysioRisk versus PhenoAge NCP acceleration (`tables/cindex_bootstrap_contrasts.csv`).
 - Censoring-robust discrimination sensitivity using Uno C and cumulative/dynamic AUC (`tables/censoring_robust_discrimination.csv`).
-- Proportional-hazards tests, event-level scaled Schoenfeld residuals, and diagnostic score-by-log-time interactions (`tables/ph_diagnostics.csv`, `tables/ph_schoenfeld_residuals.csv`, `tables/ph_time_interaction.csv`).
+- Proportional-hazards tests, event-level scaled Schoenfeld residuals, and diagnostic score-by-log-time interactions (`tables/ph_diagnostics.csv`, locally generated `tables/ph_schoenfeld_residuals.csv`, and `tables/ph_time_interaction.csv`). The event-level residual file is reproducible but intentionally not distributed in the public release.
 - Five- and eight-year calibration-in-the-large, global calibration slope with interval, fixed-horizon calibration intercept/slope point estimates, IPCW Brier score, and plot data (`tables/calibration_fixed_horizons.csv`, `tables/calibration_plot_data.csv`).
 - Follow-up and risk-set support for temporal validation (`tables/followup_summary.csv`).
 - Common complete-case comparator sensitivity within the retained benchmark; training-derived imputation is demonstrably a no-op there (`tables/comparator_sensitivity.csv`).

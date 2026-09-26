@@ -28,7 +28,7 @@
 
 ## 4. Reviewer criticisms already answered by existing outputs
 
-Existing committed results address bootstrap C-index uncertainty and paired contrasts; censoring-robust discrimination; proportional-hazards testing; scaled Schoenfeld residuals and time interaction; temporal follow-up support; fixed-horizon calibration plots/data, calibration-in-the-large, intercept/slope point estimates, and Brier scores; convergence-controlled PhysioRisk evaluation; retained-benchmark cohort flow and cycle missingness; and common-cohort comparator sensitivity. These results should be incorporated into a future manuscript response, not recomputed.
+Existing committed results address bootstrap C-index uncertainty and paired contrasts; censoring-robust discrimination; proportional-hazards testing; scaled Schoenfeld residuals and time interaction; temporal follow-up support; fixed-horizon calibration plots/data, calibration-in-the-large, intercept/slope point estimates, and Brier scores; convergence-controlled PhysioRisk evaluation; retained-benchmark cohort flow and cycle missingness; and common-cohort comparator sensitivity. These results were incorporated into the revised manuscript without recomputation.
 
 ## 5. Criticisms requiring new notebook work
 
@@ -46,7 +46,7 @@ New computation is still needed for a complete source-to-analysis cohort flow, v
 | Missingness analysis | PARTIALLY FOUND | `tables/missingness_by_cycle.csv`; notebook 09. Zero missingness is only within the retained complete benchmark. |
 | Comparator sensitivity | FOUND | `tables/comparator_sensitivity.csv`; notebook 09. Common complete-case comparison exists; imputation is a documented no-op in retained data. |
 | Proportional hazards diagnostics | FOUND | `tables/ph_diagnostics.csv`, `tables/ph_time_interaction.csv`; notebook 08. |
-| Schoenfeld residuals | FOUND | `tables/ph_schoenfeld_residuals.csv`; summarized by notebook 08 and Sprint 2 findings. |
+| Schoenfeld residuals | GENERATED, NOT DISTRIBUTED | `tables/ph_schoenfeld_residuals.csv` is reproducible with `scripts/run_sprint2_validation.py` but intentionally excluded from the public release because it contains event-level derived records; aggregate findings remain documented. |
 | Calibration plots | FOUND | `tables/calibration_plot_data.csv`; plotted in `notebooks/08_validation_v2.ipynb`. No standalone committed image. |
 | Calibration intercept/slope | FOUND | `tables/calibration_fixed_horizons.csv`. Fixed-horizon point estimates plus global slope interval; no fixed-horizon bootstrap intervals. |
 | Bootstrap confidence intervals | FOUND | `tables/validation_v2.csv`, `tables/cindex_bootstrap_contrasts.csv`; 2,000 replicates with recorded seed. |

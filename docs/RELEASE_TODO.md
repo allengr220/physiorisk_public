@@ -2,12 +2,6 @@
 
 Before public release:
 
-- Insert final Research Square DOI in README, STATUS, CITATION, and manuscript references.
-- Publicly provision the hash-verified benchmark and scored parquet inputs, or add a documented acquisition mechanism.
-- Recover the exact frozen DemoRisk and physiology residualization/axis/model artifacts.
-- Inventory producer-verified comparison and row-level comparator outputs from MyDrive.
-- Replace private absolute Colab paths with documented configuration without changing the frozen scientific workflow.
-- Export the submitted benchmark comparison and any required ablation tables.
-- Add the verbatim BMC decision letter/reviewer comments if redistribution is permitted.
-- Confirm notebooks contain no credentials or unrelated scratch notes.
-- Push repository to GitHub.
+- Finalize and submit the Research Square v2 manuscript; replace manuscript files only when the approved final version is available.
+- After Research Square v2 is posted, add its assigned DOI to README, STATUS, CITATION, and manuscript references. Retain the v1 DOI until then.
+- Obtain release-owner approval for the sanitized working-tree changes, then commit and push the public snapshot.

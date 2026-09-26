@@ -6,17 +6,17 @@ The project decomposes mortality risk into:
 
 - **DemoRisk**: an age- and sex-based demographic mortality-risk component
 - **PhysioRisk**: an age- and sex-residualized physiological-risk component
-- **TotalRisk**: recombination of DemoRisk and PhysioRisk on the Cox log-hazard scale
+- **CalibratedTotalRisk**: recombination of DemoRisk and PhysioRisk on the Cox log-hazard scale
 
 The goal is not to replace existing biological-age or mortality-risk models, but to make their structure more interpretable by distinguishing age-entangled baseline risk from residual physiological variation.
 
 ## Current status
 
-The PhysioRisk manuscript has been submitted to *BMC Medical Informatics and Decision Making*, has passed technical checks, and is publicly available as a Research Square preprint.
+The manuscript was rejected after external peer review by *BMC Medical Informatics and Decision Making*. Research Square v1 is publicly available, and the revised Research Square v2 manuscript is being prepared for submission.
 
-Research Square DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
+Research Square v1 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
 
-Following external review by *BMC Medical Informatics and Decision Making*, this repository is being consolidated as the canonical public reproducibility artifact. Scientific revisions are not part of the current repository sprint.
+This repository accompanies the revised work and is being prepared as its canonical public reproducibility artifact.
 
 ## Repository structure
 
@@ -59,7 +59,8 @@ DATA_SOURCES.md
 STATUS.md
 CITATION.cff
 LICENSE
-eof
+```
+
 - `notebooks/` — six direct manuscript-pipeline notebooks, one optional historical ablation notebook, and three supplemental post-review notebooks
 - `data/` — documentation and manifest only; large participant-level artifacts remain external
 - `tables/` — committed validation, calibration, diagnostic, cohort, and sensitivity outputs
@@ -73,15 +74,15 @@ eof
 
 See `docs/NOTEBOOK_ORDER.md`.
 
-## Data
+## Data and reproducibility
 
-This project uses publicly available NHANES data and NHANES-linked mortality follow-up files. Raw NHANES data are not included in this repository. See `DATA_SOURCES.md` and `data/ARTIFACT_MANIFEST.tsv`.
+Raw NHANES and public-use mortality files are obtained from CDC/NCHS. Participant-level analytic datasets and score files are not redistributed; the notebooks and scripts reproduce those artifacts from the public inputs, subject to the documented external-artifact and environment requirements. Aggregate manuscript and result tables are committed. Supplementary Tables S1–S9 are in `manuscript/PhysioRisk_ResearchSquare_v2_Supplementary_Material.*`. Provenance and hashes are documented in `data/ARTIFACT_MANIFEST.tsv` and `docs/ARTIFACT_PROVENANCE.md`.
 
-Canonical documentation uses manuscript terms **DemoRisk**, **PhysioRisk**, **TotalRisk**, **PhenoAge NCP**, and **PhenoAge NCP acceleration**. Frozen notebook/data identifiers retain historical names such as `BaselineRisk`, `PhysioRisk_2axis`, `TotalRisk_2axis`, `PhenoAge_noCRP_proxy`, and `PhenoAgeAccel`; these identifiers are documented rather than renamed.
+Canonical documentation uses the revised manuscript terms **DemoRisk**, **PhysioRisk**, **CalibratedTotalRisk**, **PhenoAge NCP**, and **PhenoAge NCP acceleration**. Frozen notebook/data identifiers retain historical names such as `BaselineRisk`, `PhysioRisk_2axis`, `TotalRisk_2axis`, `PhenoAge_noCRP_proxy`, and `PhenoAgeAccel`; these identifiers are documented rather than renamed. Frozen historical notebook source also retains environment-specific Google Drive/MyDrive paths; these are workflow history and portability limitations, not bundled data or credentials.
 
 ## Model lock
 
-The core modeling specification is frozen for the submitted manuscript. See `MODEL_LOCK.md`.
+The core modeling specification remains frozen. See `MODEL_LOCK.md`.
 
 ## Related project: Reprogramming Safety Engine
 
@@ -92,4 +93,3 @@ PhysioRisk is the first public module of a broader research direction: the Repro
 Gregory S. Allen, Ph.D.  
 Independent biomedical scientist  
 Cuenca, Ecuador
-EOF

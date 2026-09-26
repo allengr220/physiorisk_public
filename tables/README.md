@@ -9,5 +9,6 @@ Current status:
 - Sprint 3D replaced the retained-benchmark-only cohort tables with upstream versions produced by `scripts/run_s3d_cohort_regeneration.py` from the regenerated 53,255-person mortality-eligible population.
 - `physiorisk_vs_phenoage_aligned_comparison.csv` was re-exported by `scripts/run_s3d_table2_export.py`, which executes the canonical comparison cells from notebook 05. Its input hashes and submitted-rounding checks are in the adjacent metadata JSON.
 - `s3d_nhanes_input_manifest.csv` records URLs, hashes, byte sizes, and row counts for all successful public inputs used in the targeted rebuild; `s3d_regeneration_manifest.json` records staged output hashes.
+- `ph_schoenfeld_residuals.csv` is a generated diagnostic output and is intentionally not distributed in the public release because it contains event-level derived records. It is reproducible from the public workflow with `scripts/run_sprint2_validation.py`.
 
 See `docs/ARTIFACT_PROVENANCE.md` for per-file lineage and status.

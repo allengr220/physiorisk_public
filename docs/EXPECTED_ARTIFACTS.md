@@ -6,6 +6,7 @@ The machine-readable inventory is `data/ARTIFACT_MANIFEST.tsv`. This document ex
 
 - Git contains notebooks, documentation, compact tables, manuscript files, and final PNG/TIFF figures.
 - Raw NHANES files and large participant-level derived parquets remain outside Git by design.
+- Event-level diagnostic output `tables/ph_schoenfeld_residuals.csv` is intentionally not distributed in the public release; `scripts/run_sprint2_validation.py` reproduces it from the public workflow.
 - `$MYDRIVE` means `/content/drive/MyDrive` under Google Colab.
 - `external_google_drive` means the expected path and producer are documented, but the artifact is not committed.
 - `regenerable_from_public_sources` means the producer notebook can rebuild the artifact from declared public NHANES inputs. It does not mean the notebook was rerun in Sprint 3C.

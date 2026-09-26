@@ -3,13 +3,13 @@
 ## Manuscript status
 
 - Manuscript title: *PhysioRisk: an interpretable survival-modeling framework for separating demographic and physiological mortality risk*
-- Journal status: rejected after external review by *BMC Medical Informatics and Decision Making*
-- Preprint: posted on Research Square
-- DOI: [insert DOI]
+- Journal status: rejected after external peer review by *BMC Medical Informatics and Decision Making*
+- Preprint: Research Square v1 posted; revised Research Square v2 manuscript being prepared/submitted
+- Research Square v1 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
 
 ## Repository status
 
-Sprint 3 repository consolidation and reviewer-gap assessment are complete. The repository is an auditable public record, but is not yet a self-contained, end-to-end reproducibility package because required data/model artifacts and upstream producer alignment remain unresolved.
+Repository consolidation, reviewer-response analyses, and public-snapshot sanitization are complete. The repository is an auditable reproducibility record, but is not a self-contained data bundle: participant-level artifacts remain external and frozen historical notebooks retain documented environment-specific paths.
 
 Completed:
 - Canonical notebooks renamed into dependency order
@@ -17,18 +17,18 @@ Completed:
 - Model specification frozen
 - Validation and diagnostic table outputs committed
 - Artifact provenance, pipeline audit, dependency graph, and reviewer-readiness documents added
+- Revised terminology adopted: DemoRisk, PhysioRisk, CalibratedTotalRisk, PhenoAge NCP, and PhenoAge NCP acceleration
+- Notebook execution outputs stripped and event-level Schoenfeld residual records excluded from the public snapshot
 
 Pending:
-- Insert final Research Square DOI in README, STATUS, CITATION, and manuscript references
-- Inventory/export the external Google Drive/MyDrive artifacts and record hashes
-- Publicly provision or reproducibly build the no-CRP benchmark and frozen baseline/model artifacts
-- Replace private Colab paths with a documented public data-location mechanism in a future reproducibility sprint
-- Add exact frozen residualization, axis-standardization, and physiology-model parameters
-- Push repository to GitHub
+- Finalize and submit the Research Square v2 manuscript
+- Update README, STATUS, CITATION, and manuscript references only after a v2 DOI is assigned
+- Obtain release-owner approval, then commit and publish the sanitized snapshot
 
 ## Release principle
 
-The submitted manuscript and model remain frozen during repository consolidation. Scientific revisions and new analyses require a separate sprint.
+Scientific results, analysis logic, model coefficients, aggregate tables, and manuscript numerical values are preserved in the public-release preparation.
+
 ## 2026-08-23 — Sprint 3C completed
 
 Commit: 5546635

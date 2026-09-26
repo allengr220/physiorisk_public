@@ -5,6 +5,7 @@
 - **COMMITTED**: present in this repository.
 - **EXTERNAL VERIFIED**: available in the local source-artifact audit with a recorded SHA256, but not committed.
 - **GENERATED, NOT COMMITTED**: producer code exists, but the output is absent from Git.
+- **GENERATED, NOT DISTRIBUTED**: producer code exists, but event- or participant-level output is intentionally excluded from the public release and can be regenerated locally.
 - **EXTERNAL GOOGLE DRIVE**: producer and expected MyDrive path are known, but the artifact is not committed.
 - **UNKNOWN**: no defensible producer trace is present.
 
@@ -53,7 +54,7 @@ Paths below are repository-relative unless explicitly described as external. Not
 | `tables/cindex_bootstrap_contrasts.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Bootstrap C-index intervals and paired contrasts | COMMITTED |
 | `tables/censoring_robust_discrimination.csv` | `scripts/run_sprint2_validation.py` | Documentation | Uno C and cumulative/dynamic AUC sensitivity | COMMITTED |
 | `tables/ph_diagnostics.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Proportional-hazards diagnostics | COMMITTED |
-| `tables/ph_schoenfeld_residuals.csv` | `scripts/run_sprint2_validation.py` | Documentation | Scaled Schoenfeld residual-level output | COMMITTED |
+| `tables/ph_schoenfeld_residuals.csv` | `scripts/run_sprint2_validation.py` | Documentation | Event-level scaled Schoenfeld residual output | GENERATED, NOT DISTRIBUTED; intentionally excluded from the public release because it contains event-level derived records; reproducible from the public workflow |
 | `tables/ph_time_interaction.csv` | `scripts/run_sprint2_validation.py` | Documentation | Diagnostic time-varying effect analysis | COMMITTED |
 | `tables/followup_summary.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Follow-up and horizon support | COMMITTED |
 | `tables/calibration_fixed_horizons.csv` | `scripts/run_sprint2_validation.py` | `08_validation_v2.ipynb` | Calibration-in-the-large, intercept/slope, Brier scores | COMMITTED |
