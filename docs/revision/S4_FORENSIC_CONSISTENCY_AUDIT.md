@@ -2,7 +2,7 @@
 
 ## Scope
 
-Audit target: `manuscript/PhysioRisk_BMC_MIDM_v3_revised.md`, its generated DOCX, and `manuscript/generated/` supplementary outputs. Canonical comparators were the frozen Sprint 1/Sprint 2 CSVs and Sprint 3D provenance. The submitted v2 manuscript remains historical and was not altered.
+Audit target: `manuscript/archive/PhysioRisk_BMC_MIDM_v3_revised.md`, its generated DOCX, and `manuscript/generated/` supplementary outputs. Canonical comparators were the frozen Sprint 1/Sprint 2 CSVs and Sprint 3D provenance. The submitted v2 manuscript remains historical and was not altered.
 
 ## Required-term classification
 

@@ -76,7 +76,7 @@ See `docs/NOTEBOOK_ORDER.md`.
 
 ## Data and reproducibility
 
-Raw NHANES and public-use mortality files are obtained from CDC/NCHS. Participant-level analytic datasets and score files are not redistributed; the notebooks and scripts reproduce those artifacts from the public inputs, subject to the documented external-artifact and environment requirements. Aggregate manuscript and result tables are committed. Supplementary Tables S1–S9 are in `manuscript/PhysioRisk_ResearchSquare_v2_Supplementary_Material.*`. Provenance and hashes are documented in `data/ARTIFACT_MANIFEST.tsv` and `docs/ARTIFACT_PROVENANCE.md`.
+Raw NHANES and public-use mortality files are obtained from CDC/NCHS. Participant-level analytic datasets and score files are not redistributed; the notebooks and scripts reproduce those artifacts from the public inputs, subject to the documented external-artifact and environment requirements. Aggregate manuscript and result tables are committed. Supplementary Tables S1–S9 are in `manuscript/PhysioRisk_RS_Supplementary_Material.*`. Provenance and hashes are documented in `data/ARTIFACT_MANIFEST.tsv` and `docs/ARTIFACT_PROVENANCE.md`.
 
 Canonical documentation uses the revised manuscript terms **DemoRisk**, **PhysioRisk**, **CalibratedTotalRisk**, **PhenoAge NCP**, and **PhenoAge NCP acceleration**. Frozen notebook/data identifiers retain historical names such as `BaselineRisk`, `PhysioRisk_2axis`, `TotalRisk_2axis`, `PhenoAge_noCRP_proxy`, and `PhenoAgeAccel`; these identifiers are documented rather than renamed. Frozen historical notebook source also retains environment-specific Google Drive/MyDrive paths; these are workflow history and portability limitations, not bundled data or credentials.
 
@@ -86,7 +86,7 @@ The core modeling specification remains frozen. See `MODEL_LOCK.md`.
 
 ## Related project: Reprogramming Safety Engine
 
-PhysioRisk is the first public module of a broader research direction: the Reprogramming Safety Engine, an open-source interpretation layer for AI-enabled rejuvenation research.
+PhysioRisk is intended as the first public module of a broader research direction: the Reprogramming Safety Engine, an open-source interpretation layer for AI-enabled rejuvenation research.
 
 ## Contact
 

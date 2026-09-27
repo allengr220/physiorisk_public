@@ -13,7 +13,7 @@ Classification at the end uses:
 
 ## Submitted Table 1: NHANES source-cycle counts
 
-The submitted Table 1 is embedded in `manuscript/PhysioRisk_BMC_MIDM_v2.docx`. It is a source-cycle participant-count table, not a modeling result and not an output of the PhysioRisk modeling notebooks.
+The submitted Table 1 is embedded in the historical `manuscript/archive/PhysioRisk_BMC_MIDM_v2.docx`. It is a source-cycle participant-count table, not a modeling result and not an output of the PhysioRisk modeling notebooks.
 
 | NHANES cycle | Original public-use participants / interviewed participants | Examined participants, where reported |
 |---|---:|---:|

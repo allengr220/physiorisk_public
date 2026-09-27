@@ -15,7 +15,6 @@ keywords:
   - physiological risk
   - biological age
 license: MIT
-date-released: 2026-06-12
 references:
   - type: article
     title: "PhysioRisk: an interpretable survival-modeling framework for separating demographic and physiological mortality risk"

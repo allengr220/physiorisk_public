@@ -12,9 +12,9 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "manuscript" / "PhysioRisk_BMC_MIDM_v2.docx"
-MARKDOWN = ROOT / "manuscript" / "PhysioRisk_BMC_MIDM_v3_revised.md"
-TARGET = ROOT / "manuscript" / "PhysioRisk_BMC_MIDM_v3_revised.docx"
+SOURCE = ROOT / "manuscript" / "archive" / "PhysioRisk_BMC_MIDM_v2.docx"
+MARKDOWN = ROOT / "manuscript" / "archive" / "PhysioRisk_BMC_MIDM_v3_revised.md"
+TARGET = ROOT / "manuscript" / "archive" / "PhysioRisk_BMC_MIDM_v3_revised.docx"
 GENERATED = ROOT / "manuscript" / "generated"
 WINDOWS_PYTHON = Path("/mnt/c/Python313/python.exe")
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
