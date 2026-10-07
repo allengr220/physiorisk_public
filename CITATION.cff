@@ -2,6 +2,8 @@ cff-version: 1.2.0
 title: "PhysioRisk"
 message: "If you use this repository, please cite the PhysioRisk preprint and repository."
 type: software
+version: "research-square-v2"
+date-released: 2026-10-06
 authors:
   - family-names: Allen
     given-names: Gregory S.
@@ -15,11 +17,13 @@ keywords:
   - physiological risk
   - biological age
 license: MIT
-references:
-  - type: article
-    title: "PhysioRisk: an interpretable survival-modeling framework for separating demographic and physiological mortality risk"
-    authors:
-      - family-names: Allen
-        given-names: Gregory S.
-    collection-title: "Research Square"
-    doi: https://doi.org/10.21203/rs.3.rs-9829732/v1
+preferred-citation:
+  type: article
+  title: "PhysioRisk: an interpretable survival- modeling framework for separating demographic and physiological mortality risk"
+  authors:
+    - family-names: Allen
+      given-names: Gregory S.
+  collection-title: "Research Square"
+  version: "2"
+  doi: 10.21203/rs.3.rs-9829732/v2
+  url: "https://www.researchsquare.com/article/rs-9829732/v2"

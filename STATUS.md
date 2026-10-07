@@ -4,8 +4,9 @@
 
 - Manuscript title: *PhysioRisk: an interpretable survival-modeling framework for separating demographic and physiological mortality risk*
 - Journal status: rejected after external peer review by *BMC Medical Informatics and Decision Making*
-- Preprint: Research Square v1 posted; revised Research Square v2 manuscript being prepared/submitted
-- Research Square v1 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
+- Preprint: Research Square Version 2 posted 2026-10-06: https://www.researchsquare.com/article/rs-9829732/v2
+- Research Square v2 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v2
+- Historical Research Square v1 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
 
 ## Repository status
 
@@ -20,10 +21,10 @@ Completed:
 - Revised terminology adopted: DemoRisk, PhysioRisk, CalibratedTotalRisk, PhenoAge NCP, and PhenoAge NCP acceleration
 - Notebook execution outputs stripped and event-level Schoenfeld residual records excluded from the public snapshot
 
-Pending:
-- Finalize and submit the Research Square v2 manuscript
-- Update README, STATUS, CITATION, and manuscript references only after a v2 DOI is assigned
-- Obtain release-owner approval, then commit and publish the sanitized snapshot
+The repository corresponds to the substantially revised Research Square v2 analysis and manuscript package. Validation reported here is internal temporal validation; external independent validation remains outstanding.
+
+Remaining release action:
+- Obtain release-owner approval for the final repository-visibility change. Do not change visibility as part of this release-metadata update.
 
 ## Release principle
 

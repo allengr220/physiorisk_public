@@ -1,7 +1,13 @@
-# Release TODO
+# Release status
 
-Before public release:
+Research Square Version 2 was publicly posted on 2026-10-06:
 
-- Finalize and submit the Research Square v2 manuscript; replace manuscript files only when the approved final version is available.
-- After Research Square v2 is posted, add its assigned DOI to README, STATUS, CITATION, and manuscript references. Retain the v1 DOI until then.
-- Obtain release-owner approval for the sanitized working-tree changes, then commit and push the public snapshot.
+- Record: https://www.researchsquare.com/article/rs-9829732/v2
+- DOI: https://doi.org/10.21203/rs.3.rs-9829732/v2
+
+The repository is the canonical public reproducibility artifact for the substantially revised v2 analysis and manuscript package. Research Square v1 is retained as a historical record where referenced.
+
+Before the final repository-visibility change:
+
+- Obtain release-owner approval for that visibility change.
+- Do not alter the frozen manuscript, analyses, numerical results, figures, or supplementary material.

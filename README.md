@@ -12,11 +12,11 @@ The goal is not to replace existing biological-age or mortality-risk models, but
 
 ## Current status
 
-The manuscript was rejected after external peer review by *BMC Medical Informatics and Decision Making*. Research Square v1 is publicly available, and the revised Research Square v2 manuscript is being prepared for submission.
+The manuscript was rejected after external peer review by *BMC Medical Informatics and Decision Making*. The substantially revised manuscript is publicly posted as Research Square Version 2 (6 October 2026): https://www.researchsquare.com/article/rs-9829732/v2
 
-Research Square v1 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v1
+Research Square v2 DOI: https://doi.org/10.21203/rs.3.rs-9829732/v2. Research Square v1 remains a historical preprint record: https://doi.org/10.21203/rs.3.rs-9829732/v1.
 
-This repository accompanies the revised work and is being prepared as its canonical public reproducibility artifact.
+This repository is the canonical public reproducibility artifact for the substantially revised v2 analysis and manuscript package. Its validation is internal temporal validation; external independent validation remains outstanding.
 
 ## Repository structure
 

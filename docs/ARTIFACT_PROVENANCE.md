@@ -1,5 +1,9 @@
 # Artifact provenance
 
+## Current public manuscript package
+
+The current public preprint is Research Square Version 2 (posted 2026-10-06): https://www.researchsquare.com/article/rs-9829732/v2 (DOI: https://doi.org/10.21203/rs.3.rs-9829732/v2). The current `manuscript/` directory contains the substantially revised v2 package: `PhysioRisk_RS_Manuscript.{docx,pdf}`, `PhysioRisk_RS_Supplementary_Material.{docx,pdf,md}`, `PhysioRisk_RS_Summary_of_Revisions.pdf`, and the caption-free Research Square upload images `Figure_1.png` and `Figure_2.png`; figure legends are supplied separately in Research Square. `PhysioRisk_ResearchSquare_v2.pdf` is the public v2 preprint PDF. Historical manuscript versions are retained in `manuscript/archive/`.
+
 ## Status vocabulary
 
 - **COMMITTED**: present in this repository.
