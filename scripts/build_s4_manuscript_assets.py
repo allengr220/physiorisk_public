@@ -105,7 +105,7 @@ def table1():
     )
 
 
-def cohort_flow_figure():
+def cohort_flow_figure(png_path=None, scale=2):
     svg = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">',
         '<rect width="100%" height="100%" fill="white"/>',
@@ -133,20 +133,23 @@ def cohort_flow_figure():
         '</svg>',
     ])
     (OUT / "figure1_cohort_flow.svg").write_text("\n".join(svg), encoding="utf-8")
-    image = Image.new("RGB", (1800, 1120), "white")
+    if not isinstance(scale, int) or scale < 1:
+        raise ValueError("scale must be a positive integer")
+    image = Image.new("RGB", (900 * scale, 560 * scale), "white")
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("DejaVuSans.ttf", 34)
-    boxes_2x = [(2*x, 2*y, 2*w, 2*h, title, count) for x, y, w, h, title, count in boxes]
-    for x, y, w, h, title, count in boxes_2x:
-        draw.rounded_rectangle((x, y, x+w, y+h), radius=16, fill="#f5f8fb", outline="#2369a1", width=4)
-        draw.text((x+w/2, y+52), title, font=font, fill="#222", anchor="mm")
-        draw.text((x+w/2, y+104), count, font=font, fill="#222", anchor="mm")
-    arrow = {"fill": "#555", "width": 4}
-    draw.line((900, 190, 900, 280), **arrow); draw.polygon(((890,270),(910,270),(900,288)), fill="#555")
-    draw.line((900, 430, 900, 520), **arrow); draw.polygon(((890,510),(910,510),(900,528)), fill="#555")
-    draw.line((900, 670, 900, 770, 450, 770, 450, 880), **arrow); draw.polygon(((440,870),(460,870),(450,888)), fill="#555")
-    draw.line((900, 670, 900, 770, 1350, 770, 1350, 880), **arrow); draw.polygon(((1340,870),(1360,870),(1350,888)), fill="#555")
-    image.save(OUT / "figure1_cohort_flow.png", dpi=(200, 200))
+    font = ImageFont.truetype("DejaVuSans.ttf", 17 * scale)
+    boxes_scaled = [(scale*x, scale*y, scale*w, scale*h, title, count) for x, y, w, h, title, count in boxes]
+    for x, y, w, h, title, count in boxes_scaled:
+        draw.rounded_rectangle((x, y, x+w, y+h), radius=8*scale, fill="#f5f8fb", outline="#2369a1", width=2*scale)
+        draw.text((x+w/2, y+26*scale), title, font=font, fill="#222", anchor="mm")
+        draw.text((x+w/2, y+52*scale), count, font=font, fill="#222", anchor="mm")
+    arrow = {"fill": "#555", "width": 2*scale}
+    s = lambda points: tuple(value * scale for value in points)
+    draw.line(s((450,95,450,140)), **arrow); draw.polygon((s((445,135)),s((455,135)),s((450,144))), fill="#555")
+    draw.line(s((450,215,450,260)), **arrow); draw.polygon((s((445,255)),s((455,255)),s((450,264))), fill="#555")
+    draw.line(s((450,335,450,385,225,385,225,440)), **arrow); draw.polygon((s((220,435)),s((230,435)),s((225,444))), fill="#555")
+    draw.line(s((450,335,450,385,675,385,675,440)), **arrow); draw.polygon((s((670,435)),s((680,435)),s((675,444))), fill="#555")
+    image.save(png_path or OUT / "figure1_cohort_flow.png", dpi=(100*scale, 100*scale))
 
 
 def table2():
@@ -195,7 +198,7 @@ def supplementary_tables():
     write_csv("table_s9_historical_submitted_results.csv", list(labeled[0]), labeled)
 
 
-def calibration_figure():
+def calibration_figure(png_path=None, scale=2):
     rows = read_csv("calibration_plot_data.csv")
     width, height = 960, 430
     panels = [(70, 75, 380, 300, "60", "5 years"), (550, 75, 380, 300, "96", "8 years")]
@@ -236,29 +239,32 @@ def calibration_figure():
         '</svg>',
     ])
     (OUT / "figure_calibration_5y_8y.svg").write_text("\n".join(svg), encoding="utf-8")
-    scale = 2
+    if not isinstance(scale, int) or scale < 1:
+        raise ValueError("scale must be a positive integer")
     image = Image.new("RGB", (width * scale, height * scale), "white")
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("DejaVuSans.ttf", 23)
-    title_font = ImageFont.truetype("DejaVuSans.ttf", 32)
-    draw.text((width, 42), "CalibratedTotalRisk fixed-horizon calibration", font=title_font, fill="#222", anchor="mm")
+    font = ImageFont.truetype("DejaVuSans.ttf", int(11.5 * scale + 0.5))
+    title_font = ImageFont.truetype("DejaVuSans.ttf", 16 * scale)
+    draw.text((width*scale/2, 21*scale), "CalibratedTotalRisk fixed-horizon calibration", font=title_font, fill="#222", anchor="mm")
     for left, top, pw, ph, horizon, title in panels:
         subset = [r for r in rows if r["horizon_months"] == horizon]
         sx = lambda value: scale * (left + value / max_risk * pw)
         sy = lambda value: scale * (top + ph - value / max_risk * ph)
         for tick in (0, .1, .2, .3, .4, .5):
             xx, yy = sx(tick), sy(tick)
-            draw.line((xx, top*scale, xx, (top+ph)*scale), fill="#dddddd", width=2)
-            draw.line((left*scale, yy, (left+pw)*scale, yy), fill="#dddddd", width=2)
-            draw.text((xx, (top+ph)*scale+25), f"{tick:.1f}", font=font, fill="#222", anchor="mt")
-            draw.text((left*scale-16, yy), f"{tick:.1f}", font=font, fill="#222", anchor="rm")
-        draw.line((left*scale, (top+ph)*scale, (left+pw)*scale, top*scale), fill="#777777", width=2)
-        draw.rectangle((left*scale, top*scale, (left+pw)*scale, (top+ph)*scale), outline="#222", width=2)
+            draw.line((xx, top*scale, xx, (top+ph)*scale), fill="#dddddd", width=scale)
+            draw.line((left*scale, yy, (left+pw)*scale, yy), fill="#dddddd", width=scale)
+            draw.text((xx, (top+ph)*scale+12.5*scale), f"{tick:.1f}", font=font, fill="#222", anchor="mt")
+            draw.text((left*scale-8*scale, yy), f"{tick:.1f}", font=font, fill="#222", anchor="rm")
+        draw.line((left*scale, (top+ph)*scale, (left+pw)*scale, top*scale), fill="#777777", width=scale)
+        draw.rectangle((left*scale, top*scale, (left+pw)*scale, (top+ph)*scale), outline="#222", width=scale)
         draw.text(((left+pw/2)*scale, (top-15)*scale), title, font=font, fill="#222", anchor="ms")
         points = [(sx(float(r["mean_predicted_risk"])), sy(float(r["KM_observed_risk"]))) for r in subset]
-        draw.line(points, fill="#2369a1", width=4)
-        for x, y in points: draw.ellipse((x-7, y-7, x+7, y+7), fill="#2369a1")
-    image.save(OUT / "figure_calibration_5y_8y.png", dpi=(200, 200))
+        draw.line(points, fill="#2369a1", width=2*scale)
+        for x, y in points:
+            radius = 3.5 * scale
+            draw.ellipse((x-radius, y-radius, x+radius, y+radius), fill="#2369a1")
+    image.save(png_path or OUT / "figure_calibration_5y_8y.png", dpi=(100*scale, 100*scale))
 
 
 if __name__ == "__main__":
