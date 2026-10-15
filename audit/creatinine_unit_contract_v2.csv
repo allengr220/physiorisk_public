@@ -1,0 +1,10 @@
+cycle,chemistry_source_file,selected_source_variable,source_unit,canonical_variable,canonical_unit,conversion_applied,conversion_factor,conversion_formula,fallback_source_variable,fallback_source_unit,fallback_conversion_factor,fallback_conversion_formula,reconciliation_formula,reconciliation_absolute_tolerance_mg_dL
+1999-2000,LAB18.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2001-2002,L40_B.XPT,LBDSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBDSCR,LBDSCRSI,µmol/L,0.011312217194570135,LBXSCR = LBDSCRSI / 88.4,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2003-2004,L40_C.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2005-2006,BIOPRO_D.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2007-2008,BIOPRO_E.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2009-2010,BIOPRO_F.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2011-2012,BIOPRO_G.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2013-2014,BIOPRO_H.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011
+2015-2016,BIOPRO_I.XPT,LBXSCR,mg/dL,LBXSCR,mg/dL,none,1.0,LBXSCR = LBXSCR,,,,,LBDSCRSI / 88.4 vs selected conventional-unit field,0.011

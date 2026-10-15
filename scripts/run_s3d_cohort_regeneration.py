@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Targeted Sprint 3D regeneration from the canonical notebook-01 rules.
+"""Staged upstream regeneration from the canonical notebook-01 rules.
 
 This script imports the cycle loader directly from the retained notebook, caches
 and hashes every successful public input, rebuilds the survival populations, and
-writes staged cohort diagnostics. It does not fit or modify any model.
+writes staged upstream artifacts. It does not fit or modify any model and refuses
+to write to an existing staging directory.
 """
 
 from __future__ import annotations
@@ -11,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from io import BytesIO
 from pathlib import Path
 
@@ -22,6 +24,17 @@ import requests
 
 REPO = Path(__file__).resolve().parents[1]
 NOTEBOOK = REPO / "notebooks/01_nhanes_extended_dataset_builder.ipynb"
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+PROTECTED_OUTPUT_ROOTS = [
+    REPO / "data",
+    REPO / "tables",
+    REPO / "figures",
+    REPO / "manuscript",
+    REPO / "submission",
+    Path("/home/ubuntu2204/longevity/data/physiorisk/data"),
+]
 
 CYCLES = [
     {"label": "1999-2000", "folder": "1999", "suffix": "", "mort": "NHANES_1999_2000_MORT_2019_PUBLIC.dat"},
@@ -44,6 +57,11 @@ EXTENDED_16 = [
 REQUIRED_BENCHMARK_BIOMARKERS = [
     "LBXSAL", "LBXSCR", "LBXGLU", "LBXLYPCT", "LBXMCV", "LBXRDW",
     "LBXSAPSI", "LBXWBCSI",
+]
+
+BENCHMARK_COLUMNS = [
+    "SEQN", "PERMTH_INT", "MORTSTAT", "RIDAGEYR", "RIAGENDR",
+    "cycle_start_year", *REQUIRED_BENCHMARK_BIOMARKERS,
 ]
 
 EXPECTED_SOURCE_BY_CYCLE = {
@@ -88,15 +106,31 @@ def parse_mortality_dat(content: bytes) -> pd.DataFrame:
     return out
 
 
+def initialize_fresh_staging_dir(stage: Path) -> tuple[Path, Path]:
+    """Create a new staging tree after excluding historical artifact roots."""
+
+    stage = stage.resolve()
+    for protected in PROTECTED_OUTPUT_ROOTS:
+        protected = protected.resolve()
+        if stage == protected or protected in stage.parents:
+            raise ValueError(f"staging directory is inside protected path: {protected}")
+    if stage.exists():
+        raise FileExistsError(
+            f"staging directory already exists; refusing to overwrite anything: {stage}"
+        )
+    inputs = stage / "inputs"
+    outputs = stage / "outputs"
+    inputs.mkdir(parents=True, exist_ok=False)
+    outputs.mkdir(parents=True, exist_ok=False)
+    return inputs, outputs
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--staging-dir", type=Path, required=True)
     args = parser.parse_args()
     stage = args.staging_dir.resolve()
-    inputs = stage / "inputs"
-    outputs = stage / "outputs"
-    inputs.mkdir(parents=True, exist_ok=True)
-    outputs.mkdir(parents=True, exist_ok=True)
+    inputs, outputs = initialize_fresh_staging_dir(stage)
 
     manifest: list[dict] = []
     session = requests.Session()
@@ -195,10 +229,23 @@ def main() -> None:
     if invariants != (19829, 2936, 33426, 13090, 2520, 6739, 416):
         raise AssertionError(f"cohort invariants failed: {invariants}")
 
-    survival_path = outputs / "nhanes_1999_2016_survival_master.parquet"
-    extended_path = outputs / "nhanes_1999_2016_extended_mortality_model_dataset.parquet"
-    survival.to_parquet(survival_path, index=False)
-    benchmark.to_parquet(extended_path, index=False)
+    benchmark_export = benchmark[BENCHMARK_COLUMNS].copy()
+    development = benchmark_export.loc[train].copy()
+    validation = benchmark_export.loc[temporal].copy()
+
+    source.to_parquet(outputs / "nhanes_biomarker_master_verified.parquet", index=False)
+    survival.to_parquet(
+        outputs / "nhanes_1999_2016_survival_master.parquet", index=False
+    )
+    benchmark.to_parquet(
+        outputs / "nhanes_1999_2016_extended_mortality_model_dataset.parquet",
+        index=False,
+    )
+    benchmark_export.to_parquet(
+        outputs / "benchmark_levine_no_crp_cohort.parquet", index=False
+    )
+    development.to_parquet(outputs / "development_cohort.parquet", index=False)
+    validation.to_parquet(outputs / "validation_cohort.parquet", index=False)
 
     flow = pd.DataFrame([
         {"flow_stage": "original NHANES source cycles", "count": len(source), "deaths": pd.NA,
