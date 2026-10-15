@@ -1,0 +1,221 @@
+{
+  "CalibratedTotalRisk_refit": false,
+  "PhenoAge_NCP_recomputed": false,
+  "PhysioRisk_standardization": {
+    "development_raw_score_mean": -5.970947359328573e-18,
+    "development_raw_score_sd_ddof1": 0.2793397742632746,
+    "formula": "(raw log partial hazard - development mean) / development sample SD"
+  },
+  "axis_aggregation": "arithmetic mean of listed signed standardized residuals",
+  "axis_definitions": {
+    "HematologicStress": [
+      "LBXWBCSI_resid_z",
+      "LBXLYPCT_resid_z",
+      "LBXMCV_resid_z",
+      "LBXRDW_resid_z"
+    ],
+    "RenalHepaticTurnover": [
+      "LBXSCR_resid_z",
+      "LBXSAL_resid_z",
+      "LBXSAPSI_resid_z"
+    ]
+  },
+  "cohorts": {
+    "development": {
+      "DemoRisk_exactly_identical_to_historical_v1": true,
+      "deaths": 2520,
+      "id_sha256": "d92bf9f9da96fca69af7cd90053905c89c9562d3aa39a308084289b7ef973d46",
+      "identical_to_historical_v1": true,
+      "n": 13090
+    },
+    "validation": {
+      "DemoRisk_exactly_identical_to_historical_v1": true,
+      "deaths": 416,
+      "id_sha256": "77108014cd570bbb2acfe9bd72b65691143dba71e98b7fdd61091351fe6b4c02",
+      "identical_to_historical_v1": true,
+      "n": 6739
+    }
+  },
+  "current_head": "40cfbdbe187789207d74bae9f803f319f63cb3de",
+  "final_standardized_score_weights": {
+    "HematologicStress": 1.4992102570115298,
+    "RenalHepaticTurnover": 0.8572618213147398
+  },
+  "input_artifacts": {
+    "corrected_development_cohort": {
+      "path": "/tmp/physiorisk_creatinine_harmonization_v2_checkpoint_20261015/outputs/development_cohort.parquet",
+      "sha256": "16ffd1c956eca84e9b3246d5297d5de8c9410cd5cc24111e6ec0c9f1a9b18d77"
+    },
+    "corrected_validation_cohort": {
+      "path": "/tmp/physiorisk_creatinine_harmonization_v2_checkpoint_20261015/outputs/validation_cohort.parquet",
+      "sha256": "5041a75a598c1f16fc2a352d50807f4113d1d1f3480b33934e82eed223bfc467"
+    },
+    "historical_development_DemoRisk_carrier": {
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86"
+    },
+    "historical_validation_DemoRisk_carrier": {
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca"
+    }
+  },
+  "model_name": "PhysioRisk_2axis_v2",
+  "parent_commit": "40cfbdbe187789207d74bae9f803f319f63cb3de",
+  "physiology_cox": {
+    "development_only_fit": true,
+    "duration": "PERMTH_INT",
+    "event": "MORTSTAT",
+    "l1_ratio": 0.0,
+    "penalizer": 0.01,
+    "raw_coefficients": {
+      "HematologicStress": 0.41878905476678663,
+      "RenalHepaticTurnover": 0.23946732365058307
+    }
+  },
+  "residualization": {
+    "design_columns": [
+      "Intercept",
+      "cr(RIDAGEYR, df=4)[0]",
+      "cr(RIDAGEYR, df=4)[1]",
+      "cr(RIDAGEYR, df=4)[2]",
+      "cr(RIDAGEYR, df=4)[3]",
+      "RIAGENDR"
+    ],
+    "formula": "cr(RIDAGEYR, df=4) + RIAGENDR",
+    "models": {
+      "LBXLYPCT": {
+        "imputation_statistic": 29.7,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": 0.04798813602689095,
+          "cr(RIDAGEYR, df=4)[0]": 2.4926179674043114,
+          "cr(RIDAGEYR, df=4)[1]": 0.9744263708211048,
+          "cr(RIDAGEYR, df=4)[2]": 1.304211268091558,
+          "cr(RIDAGEYR, df=4)[3]": -4.771255606316971
+        },
+        "linear_regression_intercept": 29.216995343998253,
+        "residual_mean": 2.4908621129533596e-14,
+        "residual_sd_ddof0": 8.566320081049271,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXMCV": {
+        "imputation_statistic": 90.1,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": -1.148515307200587,
+          "cr(RIDAGEYR, df=4)[0]": -1.909054980234333,
+          "cr(RIDAGEYR, df=4)[1]": -0.8573999538469449,
+          "cr(RIDAGEYR, df=4)[2]": 0.3420670992883525,
+          "cr(RIDAGEYR, df=4)[3]": 2.4243878347929244
+        },
+        "linear_regression_intercept": 91.81386984926597,
+        "residual_mean": -2.6020302965161316e-14,
+        "residual_sd_ddof0": 5.417791686620197,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXRDW": {
+        "imputation_statistic": 12.5,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": 0.21801554772152146,
+          "cr(RIDAGEYR, df=4)[0]": -0.33084156735224507,
+          "cr(RIDAGEYR, df=4)[1]": -0.16733550082617807,
+          "cr(RIDAGEYR, df=4)[2]": 0.05054778906426796,
+          "cr(RIDAGEYR, df=4)[3]": 0.44762927911415484
+        },
+        "linear_regression_intercept": 12.572071087164828,
+        "residual_mean": -5.197981082993674e-15,
+        "residual_sd_ddof0": 1.1965110477889047,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXSAL": {
+        "imputation_statistic": 4.3,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": -0.24071165245475323,
+          "cr(RIDAGEYR, df=4)[0]": 0.10968583305420095,
+          "cr(RIDAGEYR, df=4)[1]": -0.0017258885490631533,
+          "cr(RIDAGEYR, df=4)[2]": -0.007686773996953958,
+          "cr(RIDAGEYR, df=4)[3]": -0.10027317050818378
+        },
+        "linear_regression_intercept": 4.583080503794109,
+        "residual_mean": 1.5676450885219017e-15,
+        "residual_sd_ddof0": 0.3450083044828245,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXSAPSI": {
+        "imputation_statistic": 69.0,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": -2.4098601505104673,
+          "cr(RIDAGEYR, df=4)[0]": 1.795554202785115,
+          "cr(RIDAGEYR, df=4)[1]": -5.087621431752323,
+          "cr(RIDAGEYR, df=4)[2]": 3.0109811559293282,
+          "cr(RIDAGEYR, df=4)[3]": 0.28108607303787875
+        },
+        "linear_regression_intercept": 77.10532117395047,
+        "residual_mean": -4.5995835949096906e-14,
+        "residual_sd_ddof0": 26.71195839669658,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXSCR": {
+        "imputation_statistic": 0.8,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": -0.24148768537680104,
+          "cr(RIDAGEYR, df=4)[0]": -0.12218456548201106,
+          "cr(RIDAGEYR, df=4)[1]": -0.08417577790145284,
+          "cr(RIDAGEYR, df=4)[2]": -0.008385324994773522,
+          "cr(RIDAGEYR, df=4)[3]": 0.21474566837823736
+        },
+        "linear_regression_intercept": 1.2691783853876804,
+        "residual_mean": -1.904189394229512e-15,
+        "residual_sd_ddof0": 0.360077921269864,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      },
+      "LBXWBCSI": {
+        "imputation_statistic": 6.6,
+        "imputation_strategy": "median",
+        "linear_regression_coefficients": {
+          "Intercept": 0.0,
+          "RIAGENDR": 0.20518573316565544,
+          "cr(RIDAGEYR, df=4)[0]": 0.1598959526175636,
+          "cr(RIDAGEYR, df=4)[1]": -0.005680122834879567,
+          "cr(RIDAGEYR, df=4)[2]": -0.3268775266354373,
+          "cr(RIDAGEYR, df=4)[3]": 0.17266169685275284
+        },
+        "linear_regression_intercept": 6.615683192416971,
+        "residual_mean": 3.0614675551466503e-16,
+        "residual_sd_ddof0": 2.251207057782838,
+        "standardization_formula": "(residual - development residual mean) / (development residual SD + 1e-8)"
+      }
+    },
+    "spline_state": [
+      {
+        "all_knots": [
+          18.0,
+          40.333333333333336,
+          62.66666666666667,
+          85.0
+        ],
+        "class": "CR",
+        "constraints": null,
+        "name": "_patsy_stobj0__cr__"
+      }
+    ]
+  },
+  "sign_flips": {
+    "LBXLYPCT_resid_z": -1.0,
+    "LBXSAL_resid_z": -1.0
+  },
+  "terminology": {
+    "historical_column_name": "BaselineRisk",
+    "scientific_name": "DemoRisk"
+  }
+}

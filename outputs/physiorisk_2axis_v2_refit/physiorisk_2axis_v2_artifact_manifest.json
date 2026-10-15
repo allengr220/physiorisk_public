@@ -1,0 +1,70 @@
+[
+  {
+    "artifact": "development_input",
+    "bytes": 248909,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_input_levinenocrp.parquet",
+    "rows": 13090,
+    "sha256": "c7b6cdea0f7d80ce104e950fefd16438c895801fb8bd8c37be63fe9849ee9c5a"
+  },
+  {
+    "artifact": "validation_input",
+    "bytes": 128282,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_input_levinenocrp.parquet",
+    "rows": 6739,
+    "sha256": "1518aa23840eb0cd6678e7f925d4c0d9c44199b7e67fee536f6cea02308923d4"
+  },
+  {
+    "artifact": "development_axes",
+    "bytes": 845049,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_axes_levinenocrp.parquet",
+    "rows": 13090,
+    "sha256": "772e0b75498b0fc4c9a4b73071c35dc5dca2fff2da833eacad560eaf2cb48897"
+  },
+  {
+    "artifact": "validation_axes",
+    "bytes": 490847,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_axes_levinenocrp.parquet",
+    "rows": 6739,
+    "sha256": "bde2937c1f787140c15b9c22116ddb561965b86277382abd5136c542d56b0cbe"
+  },
+  {
+    "artifact": "development_scored",
+    "bytes": 633308,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_scored_levinenocrp.parquet",
+    "rows": 13090,
+    "sha256": "578b08930f8ea524e205a6d7754b2c07739ed775d081346b39e24fd27890cab1"
+  },
+  {
+    "artifact": "validation_scored",
+    "bytes": 324901,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_scored_levinenocrp.parquet",
+    "rows": 6739,
+    "sha256": "e623e1e0d59da80e616a29a32821ab35552601864b650f239fde2566c362920d"
+  },
+  {
+    "artifact": "coefficients",
+    "bytes": 541,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_physio_cox_coefficients.csv",
+    "rows": 2,
+    "sha256": "5fee10f0b259c8e2ac3baeb614142c00d8fe2eb1e2cb9acec2f5dad11c03fd51"
+  },
+  {
+    "artifact": "validation_metrics",
+    "bytes": 705,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_validation_metrics.csv",
+    "rows": 3,
+    "sha256": "b5772f859f1a6d38e3b7e5053411a96651d602e6921ced3e1464ddaf99fda6e6"
+  },
+  {
+    "artifact": "reconciliation",
+    "bytes": 10870,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_reconciliation.json",
+    "sha256": "6693a297f7bb7e50f0a359853ee513be1483139e58b1118463de47e07642e675"
+  },
+  {
+    "artifact": "metadata",
+    "bytes": 8643,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_model_metadata.json",
+    "sha256": "4c0a6522f5424a36ec9dfabdd6d61660d09b249814cb09a0291180751c474044"
+  }
+]

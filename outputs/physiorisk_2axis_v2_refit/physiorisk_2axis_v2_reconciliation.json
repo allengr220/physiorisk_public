@@ -1,0 +1,318 @@
+{
+  "CalibratedTotalRisk_refit": false,
+  "PhysioRisk_old_vs_corrected": {
+    "development": {
+      "changed_decile_n": 6325,
+      "changed_decile_percent": 48.319327731092436,
+      "max_absolute_difference": 8.741103307239174,
+      "mean_absolute_difference": 0.21022283331058253,
+      "pearson": 0.9405587593876755,
+      "sd_of_difference_ddof1": 0.3447933891835063,
+      "spearman": 0.9442768372348033
+    },
+    "validation": {
+      "changed_decile_n": 2196,
+      "changed_decile_percent": 32.5864371568482,
+      "max_absolute_difference": 12.392709704495,
+      "mean_absolute_difference": 0.15109458682907978,
+      "pearson": 0.9527846602166798,
+      "sd_of_difference_ddof1": 0.30805671592165773,
+      "spearman": 0.9826341165962028
+    }
+  },
+  "RenalHepaticTurnover_old_vs_corrected": {
+    "development": {
+      "changed_decile_n": 8952,
+      "changed_decile_percent": 68.38808250572956,
+      "max_absolute_difference": 10.210256802975666,
+      "mean_absolute_difference": 0.24757313576100085,
+      "pearson": 0.7713589953728056,
+      "sd_of_difference_ddof1": 0.4064851460154277,
+      "spearman": 0.7899174279817515
+    },
+    "validation": {
+      "changed_decile_n": 3864,
+      "changed_decile_percent": 57.33788395904437,
+      "max_absolute_difference": 14.463426130841729,
+      "mean_absolute_difference": 0.1808387825385963,
+      "pearson": 0.8039014709190222,
+      "sd_of_difference_ddof1": 0.3596642034606166,
+      "spearman": 0.9155523569962603
+    }
+  },
+  "affected_2001_2002_development_RenalHepaticTurnover_mean": {
+    "corrected_v2": 0.032824033243237336,
+    "historical_v1": 0.651849779101439
+  },
+  "all_independent_targets_reconcile": true,
+  "cohort_identity": {
+    "development": {
+      "DemoRisk_exactly_identical_to_historical_v1": true,
+      "deaths": 2520,
+      "id_sha256": "d92bf9f9da96fca69af7cd90053905c89c9562d3aa39a308084289b7ef973d46",
+      "identical_to_historical_v1": true,
+      "n": 13090
+    },
+    "validation": {
+      "DemoRisk_exactly_identical_to_historical_v1": true,
+      "deaths": 416,
+      "id_sha256": "77108014cd570bbb2acfe9bd72b65691143dba71e98b7fdd61091351fe6b4c02",
+      "identical_to_historical_v1": true,
+      "n": 6739
+    }
+  },
+  "creatinine_residual_diagnostics": {
+    "development_residual_mean": 4.34250717042078e-18,
+    "development_residual_sd_ddof0": 0.9999999722282341,
+    "unstandardized_development_residual_sd_ddof0": 0.360077921269864,
+    "validation_residual_mean": 0.047395038993174265,
+    "validation_residual_sd_ddof0": 1.0891117685602894
+  },
+  "hematologic_axis_max_abs_differences": {
+    "development": 1.7763568394002505e-15,
+    "validation": 1.7763568394002505e-15
+  },
+  "hematologic_constituent_residual_max_abs_differences": {
+    "development:LBXLYPCT_resid_z": 0.0,
+    "development:LBXMCV_resid_z": 0.0,
+    "development:LBXRDW_resid_z": 0.0,
+    "development:LBXWBCSI_resid_z": 0.0,
+    "validation:LBXLYPCT_resid_z": 0.0,
+    "validation:LBXMCV_resid_z": 0.0,
+    "validation:LBXRDW_resid_z": 0.0,
+    "validation:LBXWBCSI_resid_z": 0.0
+  },
+  "status": "pass",
+  "target_checks": {
+    "affected_cycle_corrected_rht_mean": {
+      "absolute_difference": 2.4033243237332746e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.0328,
+      "observed": 0.032824033243237336,
+      "reconciles": true
+    },
+    "affected_cycle_old_rht_mean": {
+      "absolute_difference": 5.02208985609931e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.6519,
+      "observed": 0.651849779101439,
+      "reconciles": true
+    },
+    "development_physiorisk_pearson": {
+      "absolute_difference": 4.124061232446685e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.9406,
+      "observed": 0.9405587593876755,
+      "reconciles": true
+    },
+    "development_physiorisk_spearman": {
+      "absolute_difference": 2.3162765196760304e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.9443,
+      "observed": 0.9442768372348033,
+      "reconciles": true
+    },
+    "development_rht_changed_decile_percent": {
+      "absolute_difference": 0.0019174942704438536,
+      "absolute_tolerance": 0.02,
+      "expected_approximately": 68.39,
+      "observed": 68.38808250572956,
+      "reconciles": true
+    },
+    "development_rht_mad": {
+      "absolute_difference": 2.6864238999141365e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.2476,
+      "observed": 0.24757313576100085,
+      "reconciles": true
+    },
+    "development_rht_pearson": {
+      "absolute_difference": 4.100462719436315e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.7714,
+      "observed": 0.7713589953728056,
+      "reconciles": true
+    },
+    "development_rht_sd_difference": {
+      "absolute_difference": 1.4853984572293921e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.4065,
+      "observed": 0.4064851460154277,
+      "reconciles": true
+    },
+    "development_rht_spearman": {
+      "absolute_difference": 1.7427981751416688e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.7899,
+      "observed": 0.7899174279817515,
+      "reconciles": true
+    },
+    "hematologic_standardized_weight": {
+      "absolute_difference": 2.570115298361486e-07,
+      "absolute_tolerance": 5e-06,
+      "expected_approximately": 1.49921,
+      "observed": 1.4992102570115298,
+      "reconciles": true
+    },
+    "hematologic_validation_cindex": {
+      "absolute_difference": 3.813285263998267e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.636,
+      "observed": 0.63603813285264,
+      "reconciles": true
+    },
+    "hematologic_validation_hr": {
+      "absolute_difference": 6.649268733838198e-06,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 1.3053,
+      "observed": 1.3053066492687337,
+      "reconciles": true
+    },
+    "physiorisk_validation_cindex": {
+      "absolute_difference": 1.8173781058061778e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.6632,
+      "observed": 0.663181826218942,
+      "reconciles": true
+    },
+    "physiorisk_validation_hr": {
+      "absolute_difference": 3.3367298608366625e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 1.3849,
+      "observed": 1.3849333672986084,
+      "reconciles": true
+    },
+    "rht_standardized_weight": {
+      "absolute_difference": 1.7868526014375163e-07,
+      "absolute_tolerance": 5e-06,
+      "expected_approximately": 0.857262,
+      "observed": 0.8572618213147398,
+      "reconciles": true
+    },
+    "rht_validation_ci_high": {
+      "absolute_difference": 3.796982958581552e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 1.2271,
+      "observed": 1.227137969829586,
+      "reconciles": true
+    },
+    "rht_validation_ci_low": {
+      "absolute_difference": 6.824418830930767e-06,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 1.1581,
+      "observed": 1.158093175581169,
+      "reconciles": true
+    },
+    "rht_validation_cindex": {
+      "absolute_difference": 4.340236320210522e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.6176,
+      "observed": 0.6175565976367979,
+      "reconciles": true
+    },
+    "rht_validation_hr": {
+      "absolute_difference": 1.5811637516183197e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 1.1921,
+      "observed": 1.1921158116375161,
+      "reconciles": true
+    },
+    "rht_validation_p_log10": {
+      "absolute_difference": 0.0022023523770968723,
+      "absolute_tolerance": 0.02,
+      "expected_approximately": -31.899629454882437,
+      "observed": -31.901831807259533,
+      "reconciles": true
+    },
+    "validation_physiorisk_pearson": {
+      "absolute_difference": 1.533978332013408e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.9528,
+      "observed": 0.9527846602166798,
+      "reconciles": true
+    },
+    "validation_physiorisk_spearman": {
+      "absolute_difference": 3.411659620278229e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.9826,
+      "observed": 0.9826341165962028,
+      "reconciles": true
+    },
+    "validation_rht_changed_decile_percent": {
+      "absolute_difference": 0.01788395904436868,
+      "absolute_tolerance": 0.02,
+      "expected_approximately": 57.32,
+      "observed": 57.33788395904437,
+      "reconciles": true
+    },
+    "validation_rht_mad": {
+      "absolute_difference": 3.8782538596321414e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.1808,
+      "observed": 0.1808387825385963,
+      "reconciles": true
+    },
+    "validation_rht_pearson": {
+      "absolute_difference": 1.4709190222506052e-06,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.8039,
+      "observed": 0.8039014709190222,
+      "reconciles": true
+    },
+    "validation_rht_sd_difference": {
+      "absolute_difference": 3.579653938340366e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.3597,
+      "observed": 0.3596642034606166,
+      "reconciles": true
+    },
+    "validation_rht_spearman": {
+      "absolute_difference": 4.764300373971686e-05,
+      "absolute_tolerance": 0.0005,
+      "expected_approximately": 0.9156,
+      "observed": 0.9155523569962603,
+      "reconciles": true
+    }
+  },
+  "validation_metrics": [
+    {
+      "HR_95CI_high": 1.351315996935137,
+      "HR_95CI_low": 1.2608638190397687,
+      "HR_per_validation_SD": 1.3053066492687337,
+      "Harrell_C_index": 0.63603813285264,
+      "p": 2.3685207434534356e-51,
+      "pearson_corr_age": 0.08286705313898898,
+      "score": "HematologicStress",
+      "validation_events": 416,
+      "validation_mean": 0.08847154810734345,
+      "validation_n": 6739,
+      "validation_sd_ddof1": 0.5201652279620378
+    },
+    {
+      "HR_95CI_high": 1.227137969829586,
+      "HR_95CI_low": 1.158093175581169,
+      "HR_per_validation_SD": 1.1921158116375161,
+      "Harrell_C_index": 0.6175565976367979,
+      "p": 1.2536265830587564e-32,
+      "pearson_corr_age": 0.07427979831155705,
+      "score": "RenalHepaticTurnover",
+      "validation_events": 416,
+      "validation_mean": -0.09337472991919057,
+      "validation_n": 6739,
+      "validation_sd_ddof1": 0.602725173782886
+    },
+    {
+      "HR_95CI_high": 1.4362726880751502,
+      "HR_95CI_low": 1.3354291617335998,
+      "HR_per_validation_SD": 1.3849333672986084,
+      "Harrell_C_index": 0.663181826218942,
+      "p": 7.729271990365634e-69,
+      "pearson_corr_age": 0.10165744783787456,
+      "score": "PhysioRisk_2axis_v2",
+      "validation_events": 416,
+      "validation_mean": 0.05259086134092105,
+      "validation_n": 6739,
+      "validation_sd_ddof1": 1.01323289824093
+    }
+  ]
+}

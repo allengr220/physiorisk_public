@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "model": "PhysioRisk_2axis_v2",
+  "parent_commit": "40cfbdbe187789207d74bae9f803f319f63cb3de",
+  "producer": "scripts/refit_physiorisk_2axis_v2.py",
+  "input_artifacts": {
+    "corrected_development_cohort": {
+      "sha256": "16ffd1c956eca84e9b3246d5297d5de8c9410cd5cc24111e6ec0c9f1a9b18d77",
+      "path": "/tmp/physiorisk_creatinine_harmonization_v2_checkpoint_20261015/outputs/development_cohort.parquet"
+    },
+    "corrected_validation_cohort": {
+      "sha256": "5041a75a598c1f16fc2a352d50807f4113d1d1f3480b33934e82eed223bfc467",
+      "path": "/tmp/physiorisk_creatinine_harmonization_v2_checkpoint_20261015/outputs/validation_cohort.parquet"
+    },
+    "historical_development_DemoRisk_carrier": {
+      "sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86",
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet"
+    },
+    "historical_validation_DemoRisk_carrier": {
+      "sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca",
+      "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet"
+    }
+  },
+  "cohorts": {
+    "development": {
+      "n": 13090,
+      "deaths": 2520,
+      "id_sha256": "d92bf9f9da96fca69af7cd90053905c89c9562d3aa39a308084289b7ef973d46",
+      "ids_identical_to_v1": true,
+      "DemoRisk_identical_to_v1": true
+    },
+    "validation": {
+      "n": 6739,
+      "deaths": 416,
+      "id_sha256": "77108014cd570bbb2acfe9bd72b65691143dba71e98b7fdd61091351fe6b4c02",
+      "ids_identical_to_v1": true,
+      "DemoRisk_identical_to_v1": true
+    }
+  },
+  "residualization": {
+    "fit_cohort": "development only",
+    "formula": "cr(RIDAGEYR, df=4) + RIAGENDR",
+    "spline_all_knots": [
+      18.0,
+      40.333333333333336,
+      62.66666666666667,
+      85.0
+    ],
+    "biomarkers": [
+      "LBXSAL",
+      "LBXSCR",
+      "LBXSAPSI",
+      "LBXWBCSI",
+      "LBXLYPCT",
+      "LBXMCV",
+      "LBXRDW"
+    ],
+    "imputation": "development median",
+    "residual_sd_ddof": 0,
+    "standardization_epsilon": 1e-08,
+    "validation_transform": "frozen development transformation",
+    "full_parameters_artifact": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_model_metadata.json"
+  },
+  "axis_definitions": {
+    "HematologicStress": {
+      "aggregation": "arithmetic mean",
+      "constituents": [
+        "LBXWBCSI_resid_z",
+        "LBXLYPCT_resid_z",
+        "LBXMCV_resid_z",
+        "LBXRDW_resid_z"
+      ],
+      "sign_flips": [
+        "LBXLYPCT_resid_z"
+      ]
+    },
+    "RenalHepaticTurnover": {
+      "aggregation": "arithmetic mean",
+      "constituents": [
+        "LBXSCR_resid_z",
+        "LBXSAL_resid_z",
+        "LBXSAPSI_resid_z"
+      ],
+      "sign_flips": [
+        "LBXSAL_resid_z"
+      ]
+    }
+  },
+  "physiology_cox": {
+    "duration": "PERMTH_INT",
+    "event": "MORTSTAT",
+    "fit_cohort": "development only",
+    "penalizer": 0.01,
+    "l1_ratio": 0.0,
+    "raw_coefficients": {
+      "HematologicStress": 0.41878905476678663,
+      "RenalHepaticTurnover": 0.23946732365058307
+    },
+    "final_standardized_score_weights": {
+      "HematologicStress": 1.4992102570115298,
+      "RenalHepaticTurnover": 0.8572618213147398
+    }
+  },
+  "PhysioRisk_standardization": {
+    "development_raw_score_mean": -5.970947359328573e-18,
+    "development_raw_score_sd_ddof1": 0.2793397742632746,
+    "formula": "(raw log partial hazard - development mean) / development sample SD"
+  },
+  "validation_metrics": {
+    "HematologicStress": {
+      "HR_per_validation_SD": 1.3053066492687337,
+      "HR_95CI": [
+        1.2608638190397687,
+        1.351315996935137
+      ],
+      "p": 2.3685207434534356e-51,
+      "Harrell_C_index": 0.63603813285264,
+      "pearson_corr_age": 0.08286705313898898
+    },
+    "RenalHepaticTurnover": {
+      "HR_per_validation_SD": 1.1921158116375161,
+      "HR_95CI": [
+        1.158093175581169,
+        1.227137969829586
+      ],
+      "p": 1.2536265830587564e-32,
+      "Harrell_C_index": 0.6175565976367979,
+      "pearson_corr_age": 0.07427979831155705
+    },
+    "PhysioRisk_2axis_v2": {
+      "HR_per_validation_SD": 1.3849333672986084,
+      "HR_95CI": [
+        1.3354291617335998,
+        1.4362726880751502
+      ],
+      "p": 7.729271990365634e-69,
+      "Harrell_C_index": 0.663181826218942,
+      "pearson_corr_age": 0.10165744783787456
+    }
+  },
+  "old_vs_corrected": {
+    "RenalHepaticTurnover": {
+      "development": {
+        "pearson": 0.7713589953728056,
+        "spearman": 0.7899174279817515,
+        "mean_absolute_difference": 0.24757313576100085,
+        "sd_of_difference_ddof1": 0.4064851460154277,
+        "changed_decile_percent": 68.38808250572956
+      },
+      "validation": {
+        "pearson": 0.8039014709190222,
+        "spearman": 0.9155523569962603,
+        "mean_absolute_difference": 0.1808387825385963,
+        "sd_of_difference_ddof1": 0.3596642034606166,
+        "changed_decile_percent": 57.33788395904437
+      },
+      "affected_2001_2002_development_mean": {
+        "historical_v1": 0.651849779101439,
+        "corrected_v2": 0.032824033243237336
+      }
+    },
+    "PhysioRisk": {
+      "development": {
+        "pearson": 0.9405587593876755,
+        "spearman": 0.9442768372348033,
+        "mean_absolute_difference": 0.21022283331058253,
+        "sd_of_difference_ddof1": 0.3447933891835063
+      },
+      "validation": {
+        "pearson": 0.9527846602166798,
+        "spearman": 0.9826341165962028,
+        "mean_absolute_difference": 0.15109458682907978,
+        "sd_of_difference_ddof1": 0.30805671592165773
+      }
+    }
+  },
+  "output_artifacts": {
+    "development_input": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_input_levinenocrp.parquet",
+      "sha256": "c7b6cdea0f7d80ce104e950fefd16438c895801fb8bd8c37be63fe9849ee9c5a",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_input_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 248909,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 13090,
+      "schema_summary": [
+        "SEQN:int64",
+        "PERMTH_INT:double",
+        "MORTSTAT:double",
+        "RIDAGEYR:double",
+        "RIAGENDR:double",
+        "cycle_start_year:int64",
+        "LBXSAL:double",
+        "LBXSCR:double",
+        "LBXGLU:double",
+        "LBXLYPCT:double",
+        "LBXMCV:double",
+        "LBXRDW:double",
+        "LBXSAPSI:double",
+        "LBXWBCSI:double",
+        "BaselineRisk:double"
+      ]
+    },
+    "validation_input": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_input_levinenocrp.parquet",
+      "sha256": "1518aa23840eb0cd6678e7f925d4c0d9c44199b7e67fee536f6cea02308923d4",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_input_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 128282,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 6739,
+      "schema_summary": [
+        "SEQN:int64",
+        "PERMTH_INT:double",
+        "MORTSTAT:double",
+        "RIDAGEYR:double",
+        "RIAGENDR:double",
+        "cycle_start_year:int64",
+        "LBXSAL:double",
+        "LBXSCR:double",
+        "LBXGLU:double",
+        "LBXLYPCT:double",
+        "LBXMCV:double",
+        "LBXRDW:double",
+        "LBXSAPSI:double",
+        "LBXWBCSI:double",
+        "BaselineRisk:double"
+      ]
+    },
+    "development_axes": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_axes_levinenocrp.parquet",
+      "sha256": "772e0b75498b0fc4c9a4b73071c35dc5dca2fff2da833eacad560eaf2cb48897",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_axes_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 845049,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 13090,
+      "schema_summary": [
+        "SEQN:int64",
+        "LBXSAL_resid_z:double",
+        "LBXSCR_resid_z:double",
+        "LBXSAPSI_resid_z:double",
+        "LBXWBCSI_resid_z:double",
+        "LBXLYPCT_resid_z:double",
+        "LBXMCV_resid_z:double",
+        "LBXRDW_resid_z:double",
+        "HematologicStress:double",
+        "RenalHepaticTurnover:double"
+      ]
+    },
+    "validation_axes": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_axes_levinenocrp.parquet",
+      "sha256": "bde2937c1f787140c15b9c22116ddb561965b86277382abd5136c542d56b0cbe",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_axes_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 490847,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 6739,
+      "schema_summary": [
+        "SEQN:int64",
+        "LBXSAL_resid_z:double",
+        "LBXSCR_resid_z:double",
+        "LBXSAPSI_resid_z:double",
+        "LBXWBCSI_resid_z:double",
+        "LBXLYPCT_resid_z:double",
+        "LBXMCV_resid_z:double",
+        "LBXRDW_resid_z:double",
+        "HematologicStress:double",
+        "RenalHepaticTurnover:double"
+      ]
+    },
+    "development_scored": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_scored_levinenocrp.parquet",
+      "sha256": "578b08930f8ea524e205a6d7754b2c07739ed775d081346b39e24fd27890cab1",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_scored_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 633308,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 13090,
+      "schema_summary": [
+        "SEQN:int64",
+        "PERMTH_INT:double",
+        "MORTSTAT:double",
+        "RIDAGEYR:double",
+        "RIAGENDR:double",
+        "cycle_start_year:int64",
+        "LBXSAL:double",
+        "LBXSCR:double",
+        "LBXGLU:double",
+        "LBXLYPCT:double",
+        "LBXMCV:double",
+        "LBXRDW:double",
+        "LBXSAPSI:double",
+        "LBXWBCSI:double",
+        "BaselineRisk:double",
+        "HematologicStress:double",
+        "RenalHepaticTurnover:double",
+        "PhysioRisk_2axis_v2:double"
+      ]
+    },
+    "validation_scored": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_scored_levinenocrp.parquet",
+      "sha256": "e623e1e0d59da80e616a29a32821ab35552601864b650f239fde2566c362920d",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_scored_levinenocrp.parquet",
+      "file_type": "Apache Parquet",
+      "size_bytes": 324901,
+      "ignored_by_git": true,
+      "participant_level": true,
+      "lightweight_aggregate_or_model_metadata": false,
+      "checkpoint_policy": "remain local/external with hash-only provenance",
+      "row_count": 6739,
+      "schema_summary": [
+        "SEQN:int64",
+        "PERMTH_INT:double",
+        "MORTSTAT:double",
+        "RIDAGEYR:double",
+        "RIAGENDR:double",
+        "cycle_start_year:int64",
+        "LBXSAL:double",
+        "LBXSCR:double",
+        "LBXGLU:double",
+        "LBXLYPCT:double",
+        "LBXMCV:double",
+        "LBXRDW:double",
+        "LBXSAPSI:double",
+        "LBXWBCSI:double",
+        "BaselineRisk:double",
+        "HematologicStress:double",
+        "RenalHepaticTurnover:double",
+        "PhysioRisk_2axis_v2:double"
+      ]
+    },
+    "coefficients": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_physio_cox_coefficients.csv",
+      "sha256": "5fee10f0b259c8e2ac3baeb614142c00d8fe2eb1e2cb9acec2f5dad11c03fd51",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_physio_cox_coefficients.csv",
+      "file_type": "CSV",
+      "size_bytes": 541,
+      "ignored_by_git": false,
+      "participant_level": false,
+      "lightweight_aggregate_or_model_metadata": true,
+      "checkpoint_policy": "commit"
+    },
+    "validation_metrics": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_validation_metrics.csv",
+      "sha256": "b5772f859f1a6d38e3b7e5053411a96651d602e6921ced3e1464ddaf99fda6e6",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_validation_metrics.csv",
+      "file_type": "CSV",
+      "size_bytes": 705,
+      "ignored_by_git": false,
+      "participant_level": false,
+      "lightweight_aggregate_or_model_metadata": true,
+      "checkpoint_policy": "commit"
+    },
+    "reconciliation": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_reconciliation.json",
+      "sha256": "6693a297f7bb7e50f0a359853ee513be1483139e58b1118463de47e07642e675",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_reconciliation.json",
+      "file_type": "JSON",
+      "size_bytes": 10870,
+      "ignored_by_git": false,
+      "participant_level": false,
+      "lightweight_aggregate_or_model_metadata": true,
+      "checkpoint_policy": "commit"
+    },
+    "model_metadata": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_model_metadata.json",
+      "sha256": "4c0a6522f5424a36ec9dfabdd6d61660d09b249814cb09a0291180751c474044",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_model_metadata.json",
+      "file_type": "JSON",
+      "size_bytes": 8643,
+      "ignored_by_git": false,
+      "participant_level": false,
+      "lightweight_aggregate_or_model_metadata": true,
+      "checkpoint_policy": "commit"
+    },
+    "artifact_manifest": {
+      "path": "outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_artifact_manifest.json",
+      "sha256": "fceea6d4e19e753bbc3e2b135b067e7af19f81b6246e31949984459cdbeb1d16",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_artifact_manifest.json",
+      "file_type": "JSON",
+      "size_bytes": 3016,
+      "ignored_by_git": false,
+      "participant_level": false,
+      "lightweight_aggregate_or_model_metadata": true,
+      "checkpoint_policy": "commit"
+    }
+  },
+  "all_independent_targets_reconcile": true,
+  "CalibratedTotalRisk_refit": false,
+  "PhenoAge_NCP_recomputed": false,
+  "historical_v1_artifacts_overwritten": false,
+  "generated_values": {
+    "computed_from_model_and_scored_artifacts": true,
+    "computed_before_acceptance_checks": true,
+    "acceptance_targets_used_only_for_post_fit_reconciliation": true
+  },
+  "scope_assertions": {
+    "CalibratedTotalRisk_refit": false,
+    "PhenoAge_NCP_recomputed": false,
+    "creatinine_assay_standardization_1999_2000_changed": false,
+    "creatinine_assay_standardization_1999_2000_scope": "out of scope",
+    "historical_submitted_artifacts_unchanged": true,
+    "journal_submission_packages_unchanged": true,
+    "prior_creatinine_harmonization_checkpoint_unchanged": true
+  }
+}
