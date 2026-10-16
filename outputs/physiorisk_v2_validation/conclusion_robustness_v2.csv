@@ -1,0 +1,7 @@
+conclusion_number,conclusion,classification,evidence
+1,PhysioRisk retains mortality information after age/sex adjustment.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"PhysioRisk is built from development age/sex-residualized biomarkers; validation HR/SD=1.38493336581, 95% CI 1.33542916001 to 1.43627268685, p=7.72929410744e-69."
+2,PhysioRisk contributes incremental discrimination beyond DemoRisk.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"Paired delta C=0.0176151332779, 95% CI 0.0119655056227 to 0.0236605267659."
+3,CalibratedTotalRisk has discrimination similar to PhenoAge NCP.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"Paired delta C=-0.000256849554096, 95% CI -0.00729374931416 to 0.0062613746301."
+4,PhysioRisk numerically exceeds NCP acceleration without established discrimination superiority.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"Paired delta C=0.00883757895099, 95% CI -0.0116038164324 to 0.0289245887881."
+5,Fixed-horizon calibration remains acceptable.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"60m O/E=0.9604, IPCW slope=0.8946; 96m O/E=0.9879, IPCW slope=0.9626"
+6,The PH/time-dependence limitation remains or changes.,QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED,"Schoenfeld p=0.000670474398336; interaction beta=0.129700960167, 95% CI 0.0292947176614 to 0.230107202672, p=0.0113476486457. The Schoenfeld result retains the prespecified p < 0.01 flag; the interaction is diagnostic."

@@ -1,0 +1,6 @@
+model,historical_model_label,historical_C,corrected_C,historical_HR_per_SD,corrected_HR_per_SD,historical_age_correlation,corrected_age_correlation,historical_source
+DemoRisk,DemoRisk,0.8268759556245865,0.8268759556245865,3.7356739803237535,3.7356739803237535,0.9697340217553349,0.9697340217553347,tables/validation_v2.csv; defective v1 analysis pass; read-only
+PhysioRisk_2axis_v2,PhysioRisk_convergence_corrected,0.6541097324576873,0.663181826218942,1.3874682646635106,1.3849333658134682,0.1062334525000339,0.10165744783787456,tables/validation_v2.csv; defective v1 analysis pass; read-only
+CalibratedTotalRisk_v2,CalibratedTotalRisk,0.8431533308082665,0.8444910889025172,3.2590016242496502,3.2704811114799255,0.9464909892451216,0.9418714557076497,tables/validation_v2.csv; defective v1 analysis pass; read-only
+PhenoAge_NCP_v2,PhenoAge NCP,0.8411083058259249,0.8447479384566133,3.976116202282916,2.309587525282939,0.9613694861167088,0.9231196422719159,tables/validation_v2.csv; defective v1 analysis pass; read-only
+PhenoAge_NCP_acceleration_v2,PhenoAge NCP acceleration,0.6378574838608211,0.654344247267949,1.4321474552752531,1.2980041336972163,0.033298875352411,0.05088606117164435,tables/validation_v2.csv; defective v1 analysis pass; read-only

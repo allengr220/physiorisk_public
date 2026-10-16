@@ -1,0 +1,11 @@
+model,evaluation_cohort,censoring_distribution_cohort,development_N_for_censoring,validation_N,horizon_months,Uno_C_IPCW_truncated_at_horizon,cumulative_dynamic_AUC_IPCW,implementation
+DemoRisk,validation_2011_2016,development_1999_2010,13090,6739,60,0.8225044663710361,0.8337675554650926,scikit-survival 0.28.0
+DemoRisk,validation_2011_2016,development_1999_2010,13090,6739,96,0.8268276750219302,0.853103812626574,scikit-survival 0.28.0
+PhysioRisk_2axis_v2,validation_2011_2016,development_1999_2010,13090,6739,60,0.6660334953822553,0.6653298157165448,scikit-survival 0.28.0
+PhysioRisk_2axis_v2,validation_2011_2016,development_1999_2010,13090,6739,96,0.6629794322402434,0.6823721053095008,scikit-survival 0.28.0
+CalibratedTotalRisk_v2,validation_2011_2016,development_1999_2010,13090,6739,60,0.8405752652004882,0.850863486198312,scikit-survival 0.28.0
+CalibratedTotalRisk_v2,validation_2011_2016,development_1999_2010,13090,6739,96,0.8443331342503593,0.8699370432332482,scikit-survival 0.28.0
+PhenoAge_NCP_v2,validation_2011_2016,development_1999_2010,13090,6739,60,0.8414597845862047,0.8529521364042024,scikit-survival 0.28.0
+PhenoAge_NCP_v2,validation_2011_2016,development_1999_2010,13090,6739,96,0.8446443569308871,0.8750154089988553,scikit-survival 0.28.0
+PhenoAge_NCP_acceleration_v2,validation_2011_2016,development_1999_2010,13090,6739,60,0.6633737241259723,0.6709687015610077,scikit-survival 0.28.0
+PhenoAge_NCP_acceleration_v2,validation_2011_2016,development_1999_2010,13090,6739,96,0.654234401537916,0.690228493440169,scikit-survival 0.28.0

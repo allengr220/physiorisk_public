@@ -1,0 +1,667 @@
+{
+  "schema_version": 1,
+  "analysis": "PhysioRisk v2 full temporal validation",
+  "parent_commit": "effea63db3f47eba4e4d95656b3dce41cb2f94fe",
+  "physiorisk_frozen_commit": "7abcbc11a3eda981b2f4d88e385cb0486f1ed6d7",
+  "producer": "scripts/run_physiorisk_v2_full_validation.py",
+  "cohort_verification": {
+    "inputs": {
+      "physio_development": {
+        "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_scored_levinenocrp.parquet",
+        "sha256": "578b08930f8ea524e205a6d7754b2c07739ed775d081346b39e24fd27890cab1",
+        "rows": 13090
+      },
+      "physio_validation": {
+        "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_scored_levinenocrp.parquet",
+        "sha256": "e623e1e0d59da80e616a29a32821ab35552601864b650f239fde2566c362920d",
+        "rows": 6739
+      },
+      "pheno_development": {
+        "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_development_comparator.parquet",
+        "sha256": "c5575a31b94717813316af1d73f27115ef817decd5504cae910cbae3750fbfa8",
+        "rows": 13090
+      },
+      "pheno_validation": {
+        "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_comparator.parquet",
+        "sha256": "e3dcbde86a340a3a0d3e007b62d095521f820132137ee6ca201ef882162c4005",
+        "rows": 6739
+      },
+      "historical_development": {
+        "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet",
+        "sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86",
+        "rows": 13090
+      },
+      "historical_validation": {
+        "path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet",
+        "sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca",
+        "rows": 6739
+      }
+    },
+    "development": {
+      "n": 13090,
+      "deaths": 2520,
+      "id_sha256": "d92bf9f9da96fca69af7cd90053905c89c9562d3aa39a308084289b7ef973d46",
+      "DemoRisk_max_abs_difference_vs_v1": 0.0,
+      "IDs_identical_across_frozen_components": true
+    },
+    "validation": {
+      "n": 6739,
+      "deaths": 416,
+      "id_sha256": "77108014cd570bbb2acfe9bd72b65691143dba71e98b7fdd61091351fe6b4c02",
+      "DemoRisk_max_abs_difference_vs_v1": 0.0,
+      "IDs_identical_across_frozen_components": true
+    },
+    "PhysioRisk_values_verified_by_frozen_artifact_hash": true,
+    "PhenoAge_values_verified_by_frozen_artifact_hash": true,
+    "frozen_components_refit": false
+  },
+  "calibrated_totalrisk_v2": {
+    "fit_cohort": "development only",
+    "formula": "mortality ~ DemoRisk + PhysioRisk_2axis_v2",
+    "penalizer": 0.0,
+    "coefficients": {
+      "beta_Demo_v2": 1.0650002857110228,
+      "beta_Physio_v2": 0.36101789273434753
+    },
+    "definition": "CalibratedTotalRisk_v2 = beta_Demo_v2 * DemoRisk + beta_Physio_v2 * PhysioRisk_2axis_v2",
+    "baseline_survival_artifact": "outputs/physiorisk_v2_validation/calibrated_totalrisk_v2_baseline_survival.csv",
+    "baseline_survival_center": -1.156976814163544e-16,
+    "log_likelihood": -20297.542131376464,
+    "frozen_before_validation_evaluation": true,
+    "validation_outcomes_influenced_fitting": false
+  },
+  "totalrisk_original_v2": {
+    "definition": "TotalRisk_original_v2 = DemoRisk + PhysioRisk_2axis_v2",
+    "historical_provenance_only": true,
+    "primary_manuscript_composite": false
+  },
+  "independent_audit_reconciliation": {
+    "TotalRisk_original_v2_HR_per_SD": {
+      "observed": 1.8696659998763605,
+      "approximate_target": 1.8697,
+      "observed_minus_target": -3.400012363941052e-05
+    },
+    "TotalRisk_original_v2_Harrell_C": {
+      "observed": 0.8414586821198278,
+      "approximate_target": 0.8415,
+      "observed_minus_target": -4.1317880172253574e-05
+    },
+    "CalibratedTotalRisk_v2_HR_per_SD": {
+      "observed": 3.2704811114799255,
+      "approximate_target": 3.2705,
+      "observed_minus_target": -1.888852007470021e-05
+    },
+    "CalibratedTotalRisk_v2_Harrell_C": {
+      "observed": 0.8444910889025172,
+      "approximate_target": 0.8445,
+      "observed_minus_target": -8.911097482799946e-06
+    },
+    "paired_comparison_C_exact_target_reproduced": true
+  },
+  "historical_submitted_reference": {
+    "PhysioRisk_submitted_C": 0.6541097324576873,
+    "PhysioRisk_submitted_HR_per_SD": 2.771657907710413,
+    "PhysioRisk_submitted_HR_status": "historical non-converged fit; retained for provenance only and excluded from scientific comparison",
+    "source": "manuscript/generated/table_s9_historical_submitted_results.csv"
+  },
+  "primary_validation_metrics": [
+    {
+      "model": "DemoRisk",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "Harrell_C": 0.8268759556245865,
+      "Harrell_C_bootstrap_95CI_low": 0.8040182995387262,
+      "Harrell_C_bootstrap_95CI_high": 0.8469372226396208,
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 20260821,
+      "validation_SD_ddof1": 1.3084308714167698,
+      "HR_per_validation_SD": 3.7356739803237535,
+      "HR_95CI_low": 3.3467691320278834,
+      "HR_95CI_high": 4.1697707659960725,
+      "p_value": 4.376570278460059e-122,
+      "pearson_age_correlation": 0.9697340217553347,
+      "cox_penalizer": 0.0,
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhysioRisk_2axis_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "Harrell_C": 0.663181826218942,
+      "Harrell_C_bootstrap_95CI_low": 0.6320421182412043,
+      "Harrell_C_bootstrap_95CI_high": 0.693889892071012,
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 20260821,
+      "validation_SD_ddof1": 1.01323289824093,
+      "HR_per_validation_SD": 1.3849333658134682,
+      "HR_95CI_low": 1.3354291600107073,
+      "HR_95CI_high": 1.4362726868477569,
+      "p_value": 7.729294107440989e-69,
+      "pearson_age_correlation": 0.10165744783787456,
+      "cox_penalizer": 0.0,
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "Harrell_C": 0.8444910889025172,
+      "Harrell_C_bootstrap_95CI_low": 0.8231921114872884,
+      "Harrell_C_bootstrap_95CI_high": 0.864053587703698,
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 20260821,
+      "validation_SD_ddof1": 1.4741821060674787,
+      "HR_per_validation_SD": 3.2704811114799255,
+      "HR_95CI_low": 3.045416675848306,
+      "HR_95CI_high": 3.512178410715363,
+      "p_value": 9.895956963012997e-233,
+      "pearson_age_correlation": 0.9418714557076497,
+      "cox_penalizer": 0.0,
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhenoAge_NCP_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "Harrell_C": 0.8447479384566133,
+      "Harrell_C_bootstrap_95CI_low": 0.8227212620788946,
+      "Harrell_C_bootstrap_95CI_high": 0.8644548376421857,
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 20260821,
+      "validation_SD_ddof1": 1.9091716645122903,
+      "HR_per_validation_SD": 2.309587525282939,
+      "HR_95CI_low": 2.2047137326113377,
+      "HR_95CI_high": 2.4194499530896323,
+      "p_value": 5.086320490386028e-273,
+      "pearson_age_correlation": 0.9231196422719159,
+      "cox_penalizer": 0.0,
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhenoAge_NCP_acceleration_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "Harrell_C": 0.654344247267949,
+      "Harrell_C_bootstrap_95CI_low": 0.6215499827877258,
+      "Harrell_C_bootstrap_95CI_high": 0.6854498523852575,
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 20260821,
+      "validation_SD_ddof1": 0.7321250112273969,
+      "HR_per_validation_SD": 1.2980041336972163,
+      "HR_95CI_low": 1.2564717097648,
+      "HR_95CI_high": 1.3409094036907867,
+      "p_value": 1.1059589787954546e-55,
+      "pearson_age_correlation": 0.05088606117164435,
+      "cox_penalizer": 0.0,
+      "cox_convergence_warning": "none"
+    }
+  ],
+  "paired_bootstrap": [
+    {
+      "contrast": "CalibratedTotalRisk_v2 - DemoRisk",
+      "model_A": "CalibratedTotalRisk_v2",
+      "model_B": "DemoRisk",
+      "observed_delta_C_A_minus_B": 0.01761513327793074,
+      "percentile_95CI_low": 0.011965505622664189,
+      "percentile_95CI_high": 0.02366052676588958,
+      "proportion_bootstrap_delta_above_zero": 1.0,
+      "completed_replicates": 2000,
+      "bootstrap_failures": 0,
+      "eventless_redraws": 0,
+      "bootstrap_seed": 20260821
+    },
+    {
+      "contrast": "CalibratedTotalRisk_v2 - PhenoAge_NCP_v2",
+      "model_A": "CalibratedTotalRisk_v2",
+      "model_B": "PhenoAge_NCP_v2",
+      "observed_delta_C_A_minus_B": -0.00025684955409610577,
+      "percentile_95CI_low": -0.007293749314164088,
+      "percentile_95CI_high": 0.006261374630102855,
+      "proportion_bootstrap_delta_above_zero": 0.4775,
+      "completed_replicates": 2000,
+      "bootstrap_failures": 0,
+      "eventless_redraws": 0,
+      "bootstrap_seed": 20260821
+    },
+    {
+      "contrast": "PhysioRisk_2axis_v2 - PhenoAge_NCP_acceleration_v2",
+      "model_A": "PhysioRisk_2axis_v2",
+      "model_B": "PhenoAge_NCP_acceleration_v2",
+      "observed_delta_C_A_minus_B": 0.008837578950992908,
+      "percentile_95CI_low": -0.011603816432397801,
+      "percentile_95CI_high": 0.028924588788065912,
+      "proportion_bootstrap_delta_above_zero": 0.8205,
+      "completed_replicates": 2000,
+      "bootstrap_failures": 0,
+      "eventless_redraws": 0,
+      "bootstrap_seed": 20260821
+    }
+  ],
+  "fixed_horizon_calibration": [
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "horizon_months": 60,
+      "development_baseline_survival": 0.9839961563774662,
+      "development_lp_center": -1.156976814163544e-16,
+      "mean_predicted_mortality": 0.04845155585409468,
+      "KM_observed_mortality": 0.046532604284644785,
+      "observed_minus_predicted": -0.001918951569449892,
+      "observed_to_expected_ratio": 0.9603944282980601,
+      "IPCW_logistic_calibration_intercept": -0.2665665254568583,
+      "IPCW_logistic_calibration_slope": 0.8945810335562009,
+      "IPCW_Brier_score": 0.037715742455184026,
+      "IPCW_usable_N": 4709,
+      "IPCW_censoring_distribution": "validation censoring Kaplan-Meier",
+      "known_outcomes_contribute_directly": true,
+      "no_validation_recalibration": true,
+      "global_Cox_calibration_slope": 0.8037928951265351,
+      "global_Cox_calibration_slope_95CI_low": 0.7554275191482236,
+      "global_Cox_calibration_slope_95CI_high": 0.8521582711048465,
+      "global_Cox_calibration_slope_p": 9.895956963008485e-233
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "horizon_months": 96,
+      "development_baseline_survival": 0.9670419573338259,
+      "development_lp_center": -1.156976814163544e-16,
+      "mean_predicted_mortality": 0.08933522057802906,
+      "KM_observed_mortality": 0.08825554976022365,
+      "observed_minus_predicted": -0.0010796708178054115,
+      "observed_to_expected_ratio": 0.9879143879556174,
+      "IPCW_logistic_calibration_intercept": -0.06033931395583234,
+      "IPCW_logistic_calibration_slope": 0.9625753743010325,
+      "IPCW_Brier_score": 0.060369140265851384,
+      "IPCW_usable_N": 1518,
+      "IPCW_censoring_distribution": "validation censoring Kaplan-Meier",
+      "known_outcomes_contribute_directly": true,
+      "no_validation_recalibration": true,
+      "global_Cox_calibration_slope": 0.8037928951265351,
+      "global_Cox_calibration_slope_95CI_low": 0.7554275191482236,
+      "global_Cox_calibration_slope_95CI_high": 0.8521582711048465,
+      "global_Cox_calibration_slope_p": 9.895956963008485e-233
+    }
+  ],
+  "global_calibration_slope": {
+    "estimate": 0.8037928951265351,
+    "ci_95_low": 0.7554275191482236,
+    "ci_95_high": 0.8521582711048465,
+    "p_value": 9.895956963008485e-233
+  },
+  "ph_diagnostics": [
+    {
+      "model": "DemoRisk",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "time_transform": "rank",
+      "test_statistic": 2.925210348304394,
+      "p_value": 0.08720585924142564,
+      "descriptive_flag_p_lt_0_01": false,
+      "flag_rule": "p < 0.01; prespecified descriptive flag; no multiplicity adjustment",
+      "scaled_residual_band_summary": "early_0_36m: mean=-0.087; middle_37_72m: mean=0.044; late_73m_plus: mean=0.099",
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhysioRisk_2axis_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "time_transform": "rank",
+      "test_statistic": 0.02412234086466131,
+      "p_value": 0.8765740271631859,
+      "descriptive_flag_p_lt_0_01": false,
+      "flag_rule": "p < 0.01; prespecified descriptive flag; no multiplicity adjustment",
+      "scaled_residual_band_summary": "early_0_36m: mean=0.010; middle_37_72m: mean=-0.028; late_73m_plus: mean=0.042",
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "time_transform": "rank",
+      "test_statistic": 11.56936143052939,
+      "p_value": 0.0006704743983360888,
+      "descriptive_flag_p_lt_0_01": true,
+      "flag_rule": "p < 0.01; prespecified descriptive flag; no multiplicity adjustment",
+      "scaled_residual_band_summary": "early_0_36m: mean=-0.145; middle_37_72m: mean=0.079; late_73m_plus: mean=0.154",
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhenoAge_NCP_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "time_transform": "rank",
+      "test_statistic": 0.07806320866768321,
+      "p_value": 0.7799394520910761,
+      "descriptive_flag_p_lt_0_01": false,
+      "flag_rule": "p < 0.01; prespecified descriptive flag; no multiplicity adjustment",
+      "scaled_residual_band_summary": "early_0_36m: mean=0.012; middle_37_72m: mean=-0.050; late_73m_plus: mean=0.086",
+      "cox_convergence_warning": "none"
+    },
+    {
+      "model": "PhenoAge_NCP_acceleration_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "time_transform": "rank",
+      "test_statistic": 1.0068155081193761,
+      "p_value": 0.31566695525914623,
+      "descriptive_flag_p_lt_0_01": false,
+      "flag_rule": "p < 0.01; prespecified descriptive flag; no multiplicity adjustment",
+      "scaled_residual_band_summary": "early_0_36m: mean=0.029; middle_37_72m: mean=-0.043; late_73m_plus: mean=0.031",
+      "cox_convergence_warning": "none"
+    }
+  ],
+  "time_interaction": [
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths": 416,
+      "score_scale": "validation cohort SD",
+      "time_interaction": "standardized score * log(time_months / 60)",
+      "reference_time_months": 60,
+      "main_log_HR_at_60m": 1.2856226637785206,
+      "HR_per_SD_at_12m": 2.935497724064379,
+      "HR_per_SD_at_60m": 3.616919380893031,
+      "HR_per_SD_at_96m": 3.8442656090698533,
+      "time_interaction_coefficient": 0.12970096016657182,
+      "time_interaction_95CI_low": 0.0292947176614156,
+      "time_interaction_95CI_high": 0.23010720267172802,
+      "time_interaction_p_value": 0.011347648645680383,
+      "direction": "effect_strengthens_over_time",
+      "diagnostic_only": true
+    }
+  ],
+  "censoring_robust_discrimination": [
+    {
+      "model": "DemoRisk",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 60,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8225044663710361,
+      "cumulative_dynamic_AUC_IPCW": 0.8337675554650926,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "DemoRisk",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 96,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8268276750219302,
+      "cumulative_dynamic_AUC_IPCW": 0.853103812626574,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhysioRisk_2axis_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 60,
+      "Uno_C_IPCW_truncated_at_horizon": 0.6660334953822553,
+      "cumulative_dynamic_AUC_IPCW": 0.6653298157165448,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhysioRisk_2axis_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 96,
+      "Uno_C_IPCW_truncated_at_horizon": 0.6629794322402434,
+      "cumulative_dynamic_AUC_IPCW": 0.6823721053095008,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 60,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8405752652004882,
+      "cumulative_dynamic_AUC_IPCW": 0.850863486198312,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 96,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8443331342503593,
+      "cumulative_dynamic_AUC_IPCW": 0.8699370432332482,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhenoAge_NCP_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 60,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8414597845862047,
+      "cumulative_dynamic_AUC_IPCW": 0.8529521364042024,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhenoAge_NCP_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 96,
+      "Uno_C_IPCW_truncated_at_horizon": 0.8446443569308871,
+      "cumulative_dynamic_AUC_IPCW": 0.8750154089988553,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhenoAge_NCP_acceleration_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 60,
+      "Uno_C_IPCW_truncated_at_horizon": 0.6633737241259723,
+      "cumulative_dynamic_AUC_IPCW": 0.6709687015610077,
+      "implementation": "scikit-survival 0.28.0"
+    },
+    {
+      "model": "PhenoAge_NCP_acceleration_v2",
+      "evaluation_cohort": "validation_2011_2016",
+      "censoring_distribution_cohort": "development_1999_2010",
+      "development_N_for_censoring": 13090,
+      "validation_N": 6739,
+      "horizon_months": 96,
+      "Uno_C_IPCW_truncated_at_horizon": 0.654234401537916,
+      "cumulative_dynamic_AUC_IPCW": 0.690228493440169,
+      "implementation": "scikit-survival 0.28.0"
+    }
+  ],
+  "followup_support": [
+    {
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths_total": 416,
+      "reverse_KM_median_months": 74.0,
+      "empirical_Q1_months": 53.0,
+      "empirical_median_months": 71.0,
+      "empirical_Q3_months": 90.0,
+      "maximum_months": 111.0,
+      "horizon_months": 60,
+      "number_at_risk": 4461,
+      "deaths_observed_by_horizon": 289
+    },
+    {
+      "cohort": "validation_2011_2016",
+      "N": 6739,
+      "deaths_total": 416,
+      "reverse_KM_median_months": 74.0,
+      "empirical_Q1_months": 53.0,
+      "empirical_median_months": 71.0,
+      "empirical_Q3_months": 90.0,
+      "maximum_months": 111.0,
+      "horizon_months": 96,
+      "number_at_risk": 1137,
+      "deaths_observed_by_horizon": 410
+    }
+  ],
+  "historical_corrected_comparison": [
+    {
+      "model": "DemoRisk",
+      "historical_model_label": "DemoRisk",
+      "historical_C": 0.8268759556245865,
+      "corrected_C": 0.8268759556245865,
+      "historical_HR_per_SD": 3.7356739803237535,
+      "corrected_HR_per_SD": 3.7356739803237535,
+      "historical_age_correlation": 0.9697340217553349,
+      "corrected_age_correlation": 0.9697340217553347,
+      "historical_source": "tables/validation_v2.csv; defective v1 analysis pass; read-only"
+    },
+    {
+      "model": "PhysioRisk_2axis_v2",
+      "historical_model_label": "PhysioRisk_convergence_corrected",
+      "historical_C": 0.6541097324576873,
+      "corrected_C": 0.663181826218942,
+      "historical_HR_per_SD": 1.3874682646635106,
+      "corrected_HR_per_SD": 1.3849333658134682,
+      "historical_age_correlation": 0.1062334525000339,
+      "corrected_age_correlation": 0.10165744783787456,
+      "historical_source": "tables/validation_v2.csv; defective v1 analysis pass; read-only"
+    },
+    {
+      "model": "CalibratedTotalRisk_v2",
+      "historical_model_label": "CalibratedTotalRisk",
+      "historical_C": 0.8431533308082665,
+      "corrected_C": 0.8444910889025172,
+      "historical_HR_per_SD": 3.2590016242496502,
+      "corrected_HR_per_SD": 3.2704811114799255,
+      "historical_age_correlation": 0.9464909892451216,
+      "corrected_age_correlation": 0.9418714557076497,
+      "historical_source": "tables/validation_v2.csv; defective v1 analysis pass; read-only"
+    },
+    {
+      "model": "PhenoAge_NCP_v2",
+      "historical_model_label": "PhenoAge NCP",
+      "historical_C": 0.8411083058259249,
+      "corrected_C": 0.8447479384566133,
+      "historical_HR_per_SD": 3.976116202282916,
+      "corrected_HR_per_SD": 2.309587525282939,
+      "historical_age_correlation": 0.9613694861167088,
+      "corrected_age_correlation": 0.9231196422719159,
+      "historical_source": "tables/validation_v2.csv; defective v1 analysis pass; read-only"
+    },
+    {
+      "model": "PhenoAge_NCP_acceleration_v2",
+      "historical_model_label": "PhenoAge NCP acceleration",
+      "historical_C": 0.6378574838608211,
+      "corrected_C": 0.654344247267949,
+      "historical_HR_per_SD": 1.4321474552752531,
+      "corrected_HR_per_SD": 1.2980041336972163,
+      "historical_age_correlation": 0.033298875352411,
+      "corrected_age_correlation": 0.05088606117164435,
+      "historical_source": "tables/validation_v2.csv; defective v1 analysis pass; read-only"
+    }
+  ],
+  "historical_corrected_delta_c_comparison": [
+    {
+      "contrast": "CalibratedTotalRisk_v2 - DemoRisk",
+      "historical_delta_C": 0.01627737518368,
+      "historical_95CI_low": 0.0110921647412922,
+      "historical_95CI_high": 0.021987202704805,
+      "corrected_delta_C": 0.01761513327793074,
+      "corrected_95CI_low": 0.011965505622664189,
+      "corrected_95CI_high": 0.02366052676588958
+    },
+    {
+      "contrast": "CalibratedTotalRisk_v2 - PhenoAge_NCP_v2",
+      "historical_delta_C": 0.0020450249823416,
+      "historical_95CI_low": -0.0032582201370468,
+      "historical_95CI_high": 0.0074799170238189,
+      "corrected_delta_C": -0.00025684955409610577,
+      "corrected_95CI_low": -0.007293749314164088,
+      "corrected_95CI_high": 0.006261374630102855
+    },
+    {
+      "contrast": "PhysioRisk_2axis_v2 - PhenoAge_NCP_acceleration_v2",
+      "historical_delta_C": 0.0162522485968662,
+      "historical_95CI_low": -0.00049447925221,
+      "historical_95CI_high": 0.0328506824109769,
+      "corrected_delta_C": 0.008837578950992908,
+      "corrected_95CI_low": -0.011603816432397801,
+      "corrected_95CI_high": 0.028924588788065912
+    }
+  ],
+  "conclusion_robustness": [
+    {
+      "conclusion_number": 1,
+      "conclusion": "PhysioRisk retains mortality information after age/sex adjustment.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "PhysioRisk is built from development age/sex-residualized biomarkers; validation HR/SD=1.38493336581, 95% CI 1.33542916001 to 1.43627268685, p=7.72929410744e-69."
+    },
+    {
+      "conclusion_number": 2,
+      "conclusion": "PhysioRisk contributes incremental discrimination beyond DemoRisk.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "Paired delta C=0.0176151332779, 95% CI 0.0119655056227 to 0.0236605267659."
+    },
+    {
+      "conclusion_number": 3,
+      "conclusion": "CalibratedTotalRisk has discrimination similar to PhenoAge NCP.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "Paired delta C=-0.000256849554096, 95% CI -0.00729374931416 to 0.0062613746301."
+    },
+    {
+      "conclusion_number": 4,
+      "conclusion": "PhysioRisk numerically exceeds NCP acceleration without established discrimination superiority.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "Paired delta C=0.00883757895099, 95% CI -0.0116038164324 to 0.0289245887881."
+    },
+    {
+      "conclusion_number": 5,
+      "conclusion": "Fixed-horizon calibration remains acceptable.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "60m O/E=0.9604, IPCW slope=0.8946; 96m O/E=0.9879, IPCW slope=0.9626"
+    },
+    {
+      "conclusion_number": 6,
+      "conclusion": "The PH/time-dependence limitation remains or changes.",
+      "classification": "QUALITATIVELY UNCHANGED BUT NUMERICALLY REVISED",
+      "evidence": "Schoenfeld p=0.000670474398336; interaction beta=0.129700960167, 95% CI 0.0292947176614 to 0.230107202672, p=0.0113476486457. The Schoenfeld result retains the prespecified p < 0.01 flag; the interaction is diagnostic."
+    }
+  ],
+  "methods": {
+    "bootstrap": {
+      "replicates": 2000,
+      "seed": 20260821,
+      "participant_level_paired_resampling": true
+    },
+    "fixed_horizon_IPCW": "validation censoring KM; known outcomes direct; censoring before horizon excluded from binary fit and represented through standard IPCW among known outcomes",
+    "robust_discrimination_censoring_distribution": "development cohort",
+    "PH_time_transform": "rank",
+    "PH_descriptive_flag": "p < 0.01",
+    "assay_standardization_1999_2000_sensitivity_applied": false
+  },
+  "safety": {
+    "frozen_PhysioRisk_modified": false,
+    "frozen_PhenoAge_modified": false,
+    "historical_outputs_overwritten": false,
+    "manuscript_or_supplement_modified": false,
+    "journal_submission_packages_modified": false,
+    "cohort_or_temporal_split_modified": false
+  }
+}

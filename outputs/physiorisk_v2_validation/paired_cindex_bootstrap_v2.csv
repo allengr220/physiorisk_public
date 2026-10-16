@@ -1,0 +1,4 @@
+contrast,model_A,model_B,observed_delta_C_A_minus_B,percentile_95CI_low,percentile_95CI_high,proportion_bootstrap_delta_above_zero,completed_replicates,bootstrap_failures,eventless_redraws,bootstrap_seed
+CalibratedTotalRisk_v2 - DemoRisk,CalibratedTotalRisk_v2,DemoRisk,0.01761513327793074,0.011965505622664189,0.02366052676588958,1.0,2000,0,0,20260821
+CalibratedTotalRisk_v2 - PhenoAge_NCP_v2,CalibratedTotalRisk_v2,PhenoAge_NCP_v2,-0.00025684955409610577,-0.007293749314164088,0.006261374630102855,0.4775,2000,0,0,20260821
+PhysioRisk_2axis_v2 - PhenoAge_NCP_acceleration_v2,PhysioRisk_2axis_v2,PhenoAge_NCP_acceleration_v2,0.008837578950992908,-0.011603816432397801,0.028924588788065912,0.8205,2000,0,0,20260821

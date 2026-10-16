@@ -1,0 +1,2 @@
+model,definition,N,deaths,Harrell_C,validation_SD_ddof1,HR_per_validation_SD,HR_95CI_low,HR_95CI_high,p_value,pearson_age_correlation,cox_convergence_warning
+TotalRisk_original_v2,DemoRisk + PhysioRisk_2axis_v2,6739,416,0.8414586821198278,1.7298950610497885,1.8696659998763605,1.8063290731896653,1.9352237656901325,2.1662290761958315e-277,0.7930149247295206,none

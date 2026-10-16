@@ -1,0 +1,154 @@
+[
+  {
+    "artifact": "primary_metrics",
+    "path": "outputs/physiorisk_v2_validation/primary_validation_metrics_v2.csv",
+    "sha256": "37462d159eeaa17302b626c1b8836798da5b8e844cdd58009f3183975c8652dd",
+    "bytes": 1489,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 5
+  },
+  {
+    "artifact": "paired_bootstrap",
+    "path": "outputs/physiorisk_v2_validation/paired_cindex_bootstrap_v2.csv",
+    "sha256": "4a054d5ee756ba0b3f0647a5725edb33714cef4929549cc2274bc5133e5f3d00",
+    "bytes": 714,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 3
+  },
+  {
+    "artifact": "coefficients",
+    "path": "outputs/physiorisk_v2_validation/calibrated_totalrisk_v2_coefficients.csv",
+    "sha256": "a21357032f626a8bc4cf2ff5771f0279f0b4af697784ad76ec44cd29cab9b3b3",
+    "bytes": 685,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 2
+  },
+  {
+    "artifact": "baseline_survival",
+    "path": "outputs/physiorisk_v2_validation/calibrated_totalrisk_v2_baseline_survival.csv",
+    "sha256": "4f6e6b3c1816fcc6725326324757cabeb36aaf7567dc5584eb739655ed6c99e8",
+    "bytes": 17363,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 249
+  },
+  {
+    "artifact": "original_metrics",
+    "path": "outputs/physiorisk_v2_validation/totalrisk_original_v2_metrics.csv",
+    "sha256": "71f326abea6c239d12efa928dc2002cdbf18d5ad62545b5ed1f197f52cdaba4e",
+    "bytes": 363,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 1
+  },
+  {
+    "artifact": "calibration",
+    "path": "outputs/physiorisk_v2_validation/fixed_horizon_calibration_v2.csv",
+    "sha256": "8a3b059d413aca780f783205d05d05912606eca3b221fd9c8d38a2fbaf052f71",
+    "bytes": 1178,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 2
+  },
+  {
+    "artifact": "calibration_plot",
+    "path": "outputs/physiorisk_v2_validation/calibration_plot_data_v2.csv",
+    "sha256": "16b123e3b45d182e536e0445fa23da688cf52af9c2476496bc5d1b9b643a94ab",
+    "bytes": 1721,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 20
+  },
+  {
+    "artifact": "ph_diagnostics",
+    "path": "outputs/physiorisk_v2_validation/ph_diagnostics_v2.csv",
+    "sha256": "94f13658dddc8983f9740e94ee82776d6fe9ad30f9fcd885e4fa4d8f55b237c5",
+    "bytes": 1406,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 5
+  },
+  {
+    "artifact": "schoenfeld_summary",
+    "path": "outputs/physiorisk_v2_validation/schoenfeld_residual_summary_v2.csv",
+    "sha256": "e7139854d5923fb2351959af569e6656641536ed834f0601fcf5455aaa7a6d71",
+    "bytes": 1233,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 15
+  },
+  {
+    "artifact": "time_interactions",
+    "path": "outputs/physiorisk_v2_validation/time_interactions_v2.csv",
+    "sha256": "dca1dc4363ec6c4ede22e0eea075b98792db5bac98980c3484d83a874e3370d4",
+    "bytes": 584,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 1
+  },
+  {
+    "artifact": "robust_discrimination",
+    "path": "outputs/physiorisk_v2_validation/censoring_robust_discrimination_v2.csv",
+    "sha256": "50d8757cc63cc03f77245a5c10efc7d66983dcbd5cc6dad9378685c850f79e53",
+    "bytes": 1555,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 10
+  },
+  {
+    "artifact": "followup",
+    "path": "outputs/physiorisk_v2_validation/followup_support_v2.csv",
+    "sha256": "82d4c2e450a4cbb8b0a650552a9bce45d79788721739c27c27df1a5f8e5d79e7",
+    "bytes": 319,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 2
+  },
+  {
+    "artifact": "historical_comparison",
+    "path": "outputs/physiorisk_v2_validation/historical_corrected_comparison_v2.csv",
+    "sha256": "dd3f7cdd5ac98c83bda5aaca5ace1892c07b94c6d5e690b7f5795117a622ea30",
+    "bytes": 1251,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 5
+  },
+  {
+    "artifact": "delta_comparison",
+    "path": "outputs/physiorisk_v2_validation/historical_corrected_delta_c_comparison_v2.csv",
+    "sha256": "1e4685b76c9b4fa9bdf18ec83e0566c24dbf98a50fafe126a2200d69fd7d5de6",
+    "bytes": 612,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 3
+  },
+  {
+    "artifact": "conclusions",
+    "path": "outputs/physiorisk_v2_validation/conclusion_robustness_v2.csv",
+    "sha256": "b8825c7e5bdf54dad8aad81c6f6ec2c051a5c31d2c9504219cac5001107bf06c",
+    "bytes": 1441,
+    "participant_level": false,
+    "ignored_by_git": false,
+    "rows": 6
+  },
+  {
+    "artifact": "participant_scores",
+    "path": "outputs/physiorisk_v2_validation/physiorisk_v2_validation_participant_scores.parquet",
+    "sha256": "b4124a37a07739b18e4583415fe4d7ab14da0e3f1d3fcea101b29c5dfdc451ef",
+    "bytes": 388873,
+    "participant_level": true,
+    "ignored_by_git": true,
+    "rows": 6739
+  },
+  {
+    "artifact": "metadata",
+    "path": "outputs/physiorisk_v2_validation/validation_metadata_v2.json",
+    "sha256": "1f175a01f94bd9a0a542b73c05fccc6217f47f23ae5d19be401230c136d03768",
+    "bytes": 27391,
+    "participant_level": false,
+    "ignored_by_git": false
+  }
+]
