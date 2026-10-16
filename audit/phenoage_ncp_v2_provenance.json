@@ -1,0 +1,795 @@
+{
+  "schema_version": 1,
+  "model": "PhenoAge_NCP_v2",
+  "acceleration_model": "PhenoAge_NCP_acceleration_v2",
+  "parent_commit": "7abcbc11a3eda981b2f4d88e385cb0486f1ed6d7",
+  "producer": "scripts/build_phenoage_ncp_v2.py",
+  "input_artifacts": {
+    "development_PhysioRisk_2axis_v2": {
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_train_scored_levinenocrp.parquet",
+      "sha256": "578b08930f8ea524e205a6d7754b2c07739ed775d081346b39e24fd27890cab1"
+    },
+    "validation_PhysioRisk_2axis_v2": {
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/physiorisk_2axis_v2_refit/physiorisk_2axis_v2_test_scored_levinenocrp.parquet",
+      "sha256": "e623e1e0d59da80e616a29a32821ab35552601864b650f239fde2566c362920d"
+    },
+    "development_historical_v1": {
+      "canonical_path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_train_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "e8f435b5a8b68dbb477f04bad280252f563b9323e9bc9dea4eb7e945c22cbb86"
+    },
+    "validation_historical_v1": {
+      "canonical_path": "/home/ubuntu2204/longevity/data/physiorisk/data/physiorisk_2axis_v1_test_scored_from_frozen_baseline_levinenocrp.parquet",
+      "sha256": "1455e24e8ca3e1f68eb58a779f7a4d48e46b8e54fa435ec00de5cf51256d08ca"
+    }
+  },
+  "cohorts": {
+    "development": {
+      "deaths": 2520,
+      "id_sha256": "d92bf9f9da96fca69af7cd90053905c89c9562d3aa39a308084289b7ef973d46",
+      "identical_to_PhysioRisk_2axis_v2": true,
+      "identical_to_historical_v1": true,
+      "n": 13090
+    },
+    "validation": {
+      "deaths": 416,
+      "id_sha256": "77108014cd570bbb2acfe9bd72b65691143dba71e98b7fdd61091351fe6b4c02",
+      "identical_to_PhysioRisk_2axis_v2": true,
+      "identical_to_historical_v1": true,
+      "n": 6739
+    }
+  },
+  "historical_implementation": {
+    "formula": "-19.907 - 0.0336*LBXSAL + 0.0095*LBXSCR + 0.1953*ln(LBXGLU) - 0.0120*LBXLYPCT + 0.0268*LBXMCV + 0.3306*LBXRDW + 0.0019*LBXSAPSI + 0.0554*LBXWBCSI + 0.0804*RIDAGEYR",
+    "defects": [
+      "LBXSAL supplied in g/dL to g/L coefficient",
+      "LBXSCR supplied in mg/dL except historical 2001-2002 SI alias",
+      "LBXGLU aliases mix mg/dL and mmol/L by cycle",
+      "glucose incorrectly log-transformed",
+      "alkaline-phosphatase coefficient rounded to 0.0019 rather than 0.00188"
+    ],
+    "validation_metrics": {
+      "acceleration": {
+        "HR_95CI_high": 1.5081982557335392,
+        "HR_95CI_low": 1.3599316104494226,
+        "HR_per_validation_SD": 1.4321475073457768,
+        "Harrell_C_index": 0.6378574838608211,
+        "p": 3.701779775864974e-42,
+        "pearson_corr_age": 0.03329887535241109,
+        "score": "historical_NCP_acceleration",
+        "validation_deaths": 416,
+        "validation_mean": 0.24247219593215016,
+        "validation_n": 6739,
+        "validation_sd_ddof1": 0.458601153528147
+      },
+      "raw": {
+        "HR_95CI_high": 4.346945773416433,
+        "HR_95CI_low": 3.6369241216837045,
+        "HR_per_validation_SD": 3.9761176968230267,
+        "Harrell_C_index": 0.8411083058259249,
+        "p": 3.3982616069242164e-202,
+        "pearson_corr_age": 0.9613694861167088,
+        "score": "historical_raw_NCP",
+        "validation_deaths": 416,
+        "validation_mean": -8.322466094921175,
+        "validation_n": 6739,
+        "validation_sd_ddof1": 1.666347750079
+      }
+    }
+  },
+  "published_form_unit_contract": {
+    "schema_version": 1,
+    "model": "PhenoAge_NCP_v2",
+    "CRP_included": false,
+    "formula": "-19.907 - 0.0336*albumin_g_L + 0.0095*creatinine_umol_L + 0.1953*glucose_mmol_L - 0.0120*lymphocyte_pct + 0.0268*MCV + 0.3306*RDW + 0.00188*alkaline_phosphatase + 0.0554*WBC + 0.0804*age",
+    "published_input_contract": {
+      "albumin": {
+        "canonical_column": "LBXSAL",
+        "canonical_unit": "g/dL",
+        "coefficient_unit": "g/L",
+        "conversion": "LBXSAL * 10"
+      },
+      "creatinine": {
+        "canonical_column": "LBXSCR",
+        "canonical_unit": "mg/dL",
+        "coefficient_unit": "umol/L",
+        "conversion": "LBXSCR * 88.4"
+      },
+      "glucose": {
+        "canonical_column": "LBXGLU",
+        "canonical_unit": "cycle-specific; see glucose_cycle_contract",
+        "coefficient_unit": "mmol/L",
+        "conversion": "explicit cycle/source contract; linear term"
+      },
+      "lymphocyte_percentage": {
+        "canonical_column": "LBXLYPCT",
+        "canonical_unit": "%",
+        "coefficient_unit": "%",
+        "conversion": "none"
+      },
+      "mean_cell_volume": {
+        "canonical_column": "LBXMCV",
+        "canonical_unit": "fL",
+        "coefficient_unit": "fL",
+        "conversion": "none"
+      },
+      "red_cell_distribution_width": {
+        "canonical_column": "LBXRDW",
+        "canonical_unit": "%",
+        "coefficient_unit": "%",
+        "conversion": "none"
+      },
+      "alkaline_phosphatase": {
+        "canonical_column": "LBXSAPSI",
+        "canonical_unit": "U/L",
+        "coefficient_unit": "U/L",
+        "conversion": "none"
+      },
+      "white_blood_cell_count": {
+        "canonical_column": "LBXWBCSI",
+        "canonical_unit": "10^3/uL (numerically equal to 10^9/L)",
+        "coefficient_unit": "10^3/uL",
+        "conversion": "none"
+      },
+      "chronological_age": {
+        "canonical_column": "RIDAGEYR",
+        "canonical_unit": "years",
+        "coefficient_unit": "years",
+        "conversion": "none"
+      }
+    },
+    "glucose_cycle_contract": [
+      {
+        "cycle": "1999-2000",
+        "cycle_start_year": 1999,
+        "chemistry_source_file": "LAB10AM.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2001-2002",
+        "cycle_start_year": 2001,
+        "chemistry_source_file": "L40_B.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBDSGLSI",
+        "source_unit": "mmol/L",
+        "target_unit": "mmol/L",
+        "conversion_factor": 1.0,
+        "conversion_formula": "LBDSGLSI",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2003-2004",
+        "cycle_start_year": 2003,
+        "chemistry_source_file": "L40_C.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBDSGLSI",
+        "source_unit": "mmol/L",
+        "target_unit": "mmol/L",
+        "conversion_factor": 1.0,
+        "conversion_formula": "LBDSGLSI",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2005-2006",
+        "cycle_start_year": 2005,
+        "chemistry_source_file": "GLU_D.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2007-2008",
+        "cycle_start_year": 2007,
+        "chemistry_source_file": "GLU_E.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2009-2010",
+        "cycle_start_year": 2009,
+        "chemistry_source_file": "GLU_F.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2011-2012",
+        "cycle_start_year": 2011,
+        "chemistry_source_file": "GLU_G.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2013-2014",
+        "cycle_start_year": 2013,
+        "chemistry_source_file": "GLU_H.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      },
+      {
+        "cycle": "2015-2016",
+        "cycle_start_year": 2015,
+        "chemistry_source_file": "GLU_I.XPT",
+        "canonical_column": "LBXGLU",
+        "selected_source_variable": "LBXGLU",
+        "source_unit": "mg/dL",
+        "target_unit": "mmol/L",
+        "conversion_factor": 0.05551,
+        "conversion_formula": "LBXGLU * 0.05551",
+        "formula_transform": "linear; no logarithm"
+      }
+    ]
+  },
+  "imputation_and_acceleration": {
+    "design_columns": [
+      "Intercept",
+      "C(RIAGENDR)[T.2.0]",
+      "cr(RIDAGEYR, df=4)[0]",
+      "cr(RIDAGEYR, df=4)[1]",
+      "cr(RIDAGEYR, df=4)[2]",
+      "cr(RIDAGEYR, df=4)[3]"
+    ],
+    "fit_cohort": "development only",
+    "formula": "cr(RIDAGEYR, df=4) + C(RIAGENDR)",
+    "imputation": {
+      "statistics": {
+        "LBXGLU": 91.6,
+        "LBXLYPCT": 29.7,
+        "LBXMCV": 90.1,
+        "LBXRDW": 12.5,
+        "LBXSAL": 4.3,
+        "LBXSAPSI": 69.0,
+        "LBXSCR": 0.8,
+        "LBXWBCSI": 6.6
+      },
+      "strategy": "development median",
+      "values_required_imputation": {
+        "development:LBXGLU": 0,
+        "development:LBXLYPCT": 0,
+        "development:LBXMCV": 0,
+        "development:LBXRDW": 0,
+        "development:LBXSAL": 0,
+        "development:LBXSAPSI": 0,
+        "development:LBXSCR": 0,
+        "development:LBXWBCSI": 0,
+        "validation:LBXGLU": 0,
+        "validation:LBXLYPCT": 0,
+        "validation:LBXMCV": 0,
+        "validation:LBXRDW": 0,
+        "validation:LBXSAL": 0,
+        "validation:LBXSAPSI": 0,
+        "validation:LBXSCR": 0,
+        "validation:LBXWBCSI": 0
+      }
+    },
+    "linear_regression_coefficients": {
+      "C(RIAGENDR)[T.2.0]": -0.13617654458600523,
+      "Intercept": 0.0,
+      "cr(RIDAGEYR, df=4)[0]": -3.150250446906048,
+      "cr(RIDAGEYR, df=4)[1]": -1.109624516289198,
+      "cr(RIDAGEYR, df=4)[2]": 1.0154610318005588,
+      "cr(RIDAGEYR, df=4)[3]": 3.2444139313946843
+    },
+    "linear_regression_intercept": -8.381860564815787,
+    "model": "PhenoAge_NCP_acceleration_v2",
+    "source_score": "PhenoAge_NCP_v2",
+    "spline_state": [
+      {
+        "all_knots": [
+          18.0,
+          40.333333333333336,
+          62.66666666666667,
+          85.0
+        ],
+        "class": "CR",
+        "constraints": null,
+        "name": "_patsy_stobj0__cr__"
+      }
+    ],
+    "validation_transform": "frozen development design and regression"
+  },
+  "corrected_validation_metrics": {
+    "acceleration": {
+      "HR_95CI_high": 1.3409091954756667,
+      "HR_95CI_low": 1.256471395923165,
+      "HR_per_validation_SD": 1.2980038708129953,
+      "Harrell_C_index": 0.654344247267949,
+      "p": 1.106570894254649e-55,
+      "pearson_corr_age": 0.05088606117164435,
+      "score": "PhenoAge_NCP_acceleration_v2",
+      "validation_deaths": 416,
+      "validation_mean": 0.23076655695400902,
+      "validation_n": 6739,
+      "validation_sd_ddof1": 0.7321250112273969
+    },
+    "raw": {
+      "HR_95CI_high": 2.41945114595776,
+      "HR_95CI_low": 2.2047150442291525,
+      "HR_per_validation_SD": 2.3095887816385274,
+      "Harrell_C_index": 0.8447479384566133,
+      "p": 5.075254666024988e-273,
+      "pearson_corr_age": 0.9231196422719159,
+      "score": "PhenoAge_NCP_v2",
+      "validation_deaths": 416,
+      "validation_mean": -8.617314928779196,
+      "validation_n": 6739,
+      "validation_sd_ddof1": 1.9091716645122903
+    }
+  },
+  "historical_vs_corrected": {
+    "acceleration": {
+      "development": {
+        "max_absolute_difference": 8.78113138296681,
+        "mean_absolute_difference": 0.31124732124754,
+        "mean_difference_corrected_minus_historical": -3.1282336028918695e-15,
+        "pearson": 0.700916394284934,
+        "sd_difference_ddof1": 0.48849402432697053,
+        "spearman": 0.6919600715705471
+      },
+      "validation": {
+        "max_absolute_difference": 13.029676892428704,
+        "mean_absolute_difference": 0.2577461582250486,
+        "mean_difference_corrected_minus_historical": -0.011705638978141142,
+        "pearson": 0.7655312785243786,
+        "sd_difference_ddof1": 0.4819363336721449,
+        "spearman": 0.8634747561073406
+      }
+    },
+    "raw": {
+      "development": {
+        "max_absolute_difference": 8.533840929026464,
+        "mean_absolute_difference": 0.46856882482512036,
+        "mean_difference_corrected_minus_historical": -0.2892514302069562,
+        "pearson": 0.9674331419680366,
+        "sd_difference_ddof1": 0.5158260032684892,
+        "spearman": 0.9782956890856499
+      },
+      "validation": {
+        "max_absolute_difference": 12.913638441384503,
+        "mean_absolute_difference": 0.4612688790630409,
+        "mean_difference_corrected_minus_historical": -0.2948488338580221,
+        "pearson": 0.9674282285942107,
+        "sd_difference_ddof1": 0.5159529692410585,
+        "spearman": 0.9815103297285837
+      }
+    }
+  },
+  "distributions": {
+    "corrected_v2": {
+      "acceleration": {
+        "development": {
+          "max": 10.047445409235358,
+          "mean": -3.644232017417119e-14,
+          "median": -0.11442655824422232,
+          "min": -1.4594013185163437,
+          "n": 13090,
+          "q25": -0.3870778657618663,
+          "q75": 0.2169010317001132,
+          "sd_ddof1": 0.6835359519797496
+        },
+        "validation": {
+          "max": 13.92307647854526,
+          "mean": 0.23076655695400902,
+          "median": 0.09816502196525967,
+          "min": -1.3164769912493082,
+          "n": 6739,
+          "q25": -0.20312042322404356,
+          "q75": 0.4714098245266931,
+          "sd_ddof1": 0.7321250112273969
+        }
+      },
+      "raw": {
+        "development": {
+          "max": 2.1074565060000037,
+          "mean": -8.927494464097908,
+          "median": -9.110554349999997,
+          "min": -12.7321991793,
+          "n": 13090,
+          "q25": -10.581643211749999,
+          "q75": -7.468598548750001,
+          "sd_ddof1": 1.9703813569960709
+        },
+        "validation": {
+          "max": 6.199731270000002,
+          "mean": -8.617314928779196,
+          "median": -8.708025627,
+          "min": -12.531225069000003,
+          "n": 6739,
+          "q25": -10.164401215000002,
+          "q75": -7.2307531915,
+          "sd_ddof1": 1.9091716645122903
+        }
+      }
+    },
+    "historical": {
+      "acceleration": {
+        "development": {
+          "max": 10.173645151720134,
+          "mean": -3.3311372504297804e-14,
+          "median": -0.04047742556210876,
+          "min": -1.4816959837090131,
+          "n": 13090,
+          "q25": -0.27990532902151566,
+          "q75": 0.22359927800386803,
+          "sd_ddof1": 0.5098149719388583
+        },
+        "validation": {
+          "max": 6.205571517870878,
+          "mean": 0.24247219593215016,
+          "median": 0.17900243881811306,
+          "min": -1.0005571359708565,
+          "n": 6739,
+          "q25": -0.047713144783334105,
+          "q75": 0.4428323862836132,
+          "sd_ddof1": 0.458601153528147
+        }
+      },
+      "raw": {
+        "development": {
+          "max": 2.0854375051087466,
+          "mean": -8.638243033890951,
+          "median": -8.76388934284672,
+          "min": -12.238390282978733,
+          "n": 13090,
+          "q25": -10.128661406588447,
+          "q75": -7.267862789868077,
+          "sd_ddof1": 1.774611207714282
+        },
+        "validation": {
+          "max": 0.5232360541017105,
+          "mean": -8.322466094921175,
+          "median": -8.349934529022669,
+          "min": -11.90422908009247,
+          "n": 6739,
+          "q25": -9.711530236141986,
+          "q75": -7.033393640882993,
+          "sd_ddof1": 1.666347750079
+        }
+      }
+    }
+  },
+  "paired_PhysioRisk_2axis_v2_comparison": {
+    "PhenoAge_NCP_acceleration_v2_C_index": 0.654344247267949,
+    "PhysioRisk_2axis_v2_C_index": 0.663181826218942,
+    "bootstrap_failure_count": 0,
+    "delta_C_PhysioRisk_minus_acceleration": 0.008837578950992908,
+    "eventless_redraw_count": 0,
+    "method": "participant-level paired nonparametric bootstrap",
+    "percentile_95CI_high": 0.028924588788065912,
+    "percentile_95CI_low": -0.011603816432397801,
+    "replicates_completed": 2000,
+    "replicates_requested": 2000,
+    "seed": 20260821
+  },
+  "target_checks": {
+    "acceleration_development_mean_absolute_difference": {
+      "absolute_difference": 2.4599766668131906e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.31124732125,
+      "observed": 0.31124732124754,
+      "reconciles": true
+    },
+    "acceleration_development_pearson": {
+      "absolute_difference": 4.934053166039121e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.70091639428,
+      "observed": 0.700916394284934,
+      "reconciles": true
+    },
+    "acceleration_development_spearman": {
+      "absolute_difference": 5.471179065352771e-13,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.69196007157,
+      "observed": 0.6919600715705471,
+      "reconciles": true
+    },
+    "acceleration_validation_mean_absolute_difference": {
+      "absolute_difference": 4.951428156374504e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.25774615823,
+      "observed": 0.2577461582250486,
+      "reconciles": true
+    },
+    "acceleration_validation_pearson": {
+      "absolute_difference": 4.378608586819155e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.76553127852,
+      "observed": 0.7655312785243786,
+      "reconciles": true
+    },
+    "acceleration_validation_spearman": {
+      "absolute_difference": 2.6594282331871e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.86347475611,
+      "observed": 0.8634747561073406,
+      "reconciles": true
+    },
+    "corrected_accel_age_corr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-12,
+      "expected_approximately": 0.05088606117164435,
+      "observed": 0.05088606117164435,
+      "reconciles": true
+    },
+    "corrected_accel_c": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-12,
+      "expected_approximately": 0.654344247267949,
+      "observed": 0.654344247267949,
+      "reconciles": true
+    },
+    "corrected_accel_ci_high": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 1.3409091954756667,
+      "observed": 1.3409091954756667,
+      "reconciles": true
+    },
+    "corrected_accel_ci_low": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 1.256471395923165,
+      "observed": 1.256471395923165,
+      "reconciles": true
+    },
+    "corrected_accel_hr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 1.2980038708129953,
+      "observed": 1.2980038708129953,
+      "reconciles": true
+    },
+    "corrected_raw_age_corr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-12,
+      "expected_approximately": 0.9231196422719159,
+      "observed": 0.9231196422719159,
+      "reconciles": true
+    },
+    "corrected_raw_c": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-12,
+      "expected_approximately": 0.8447479384566133,
+      "observed": 0.8447479384566133,
+      "reconciles": true
+    },
+    "corrected_raw_ci_high": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 2.41945114595776,
+      "observed": 2.41945114595776,
+      "reconciles": true
+    },
+    "corrected_raw_ci_low": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 2.2047150442291525,
+      "observed": 2.2047150442291525,
+      "reconciles": true
+    },
+    "corrected_raw_hr": {
+      "absolute_difference": 0.0,
+      "absolute_tolerance": 1e-10,
+      "expected_approximately": 2.3095887816385274,
+      "observed": 2.3095887816385274,
+      "reconciles": true
+    },
+    "historical_accel_age_corr": {
+      "absolute_difference": 2.411092159260164e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.03329887535,
+      "observed": 0.03329887535241109,
+      "reconciles": true
+    },
+    "historical_accel_c": {
+      "absolute_difference": 3.9178882360602074e-11,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.6378574839,
+      "observed": 0.6378574838608211,
+      "reconciles": true
+    },
+    "historical_accel_hr": {
+      "absolute_difference": 4.5776715751344454e-11,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 1.4321475073,
+      "observed": 1.4321475073457768,
+      "reconciles": true
+    },
+    "historical_raw_age_corr": {
+      "absolute_difference": 1.6708856520608606e-11,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.9613694861,
+      "observed": 0.9613694861167088,
+      "reconciles": true
+    },
+    "historical_raw_c": {
+      "absolute_difference": 2.5924928870324493e-11,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.8411083058,
+      "observed": 0.8411083058259249,
+      "reconciles": true
+    },
+    "historical_raw_hr": {
+      "absolute_difference": 2.3026913709145447e-11,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 3.9761176968,
+      "observed": 3.9761176968230267,
+      "reconciles": true
+    },
+    "raw_development_mean_absolute_difference": {
+      "absolute_difference": 4.879652237832488e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.46856882483,
+      "observed": 0.46856882482512036,
+      "reconciles": true
+    },
+    "raw_development_pearson": {
+      "absolute_difference": 1.963318396747127e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.96743314197,
+      "observed": 0.9674331419680366,
+      "reconciles": true
+    },
+    "raw_development_spearman": {
+      "absolute_difference": 4.350075855086288e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.97829568909,
+      "observed": 0.9782956890856499,
+      "reconciles": true
+    },
+    "raw_validation_mean_absolute_difference": {
+      "absolute_difference": 3.0409008644483038e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.46126887906,
+      "observed": 0.4612688790630409,
+      "reconciles": true
+    },
+    "raw_validation_pearson": {
+      "absolute_difference": 4.210742865495831e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.96742822859,
+      "observed": 0.9674282285942107,
+      "reconciles": true
+    },
+    "raw_validation_spearman": {
+      "absolute_difference": 1.4163115125143122e-12,
+      "absolute_tolerance": 1e-09,
+      "expected_approximately": 0.98151032973,
+      "observed": 0.9815103297285837,
+      "reconciles": true
+    }
+  },
+  "all_independent_targets_reconcile": true,
+  "output_artifacts": {
+    "development_comparator": {
+      "artifact": "development_comparator",
+      "bytes": 333476,
+      "participant_level": true,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_development_comparator.parquet",
+      "rows": 13090,
+      "sha256": "c5575a31b94717813316af1d73f27115ef817decd5504cae910cbae3750fbfa8",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_development_comparator.parquet",
+      "schema_summary": [
+        "SEQN:int64",
+        "PhenoAge_NCP_v2:double",
+        "PhenoAge_NCP_acceleration_v2:double"
+      ],
+      "git_policy": "ignored/local; hash-only provenance"
+    },
+    "validation_comparator": {
+      "artifact": "validation_comparator",
+      "bytes": 170414,
+      "participant_level": true,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_comparator.parquet",
+      "rows": 6739,
+      "sha256": "e3dcbde86a340a3a0d3e007b62d095521f820132137ee6ca201ef882162c4005",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_comparator.parquet",
+      "schema_summary": [
+        "SEQN:int64",
+        "PhenoAge_NCP_v2:double",
+        "PhenoAge_NCP_acceleration_v2:double"
+      ],
+      "git_policy": "ignored/local; hash-only provenance"
+    },
+    "unit_contract_csv": {
+      "artifact": "unit_contract_csv",
+      "bytes": 1032,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.csv",
+      "sha256": "011ccb00d2a9ebc80b14bf54f6e5f5a6d340f9501ee8660e246dfca9fc2fa1dd",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.csv",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "unit_contract_json": {
+      "artifact": "unit_contract_json",
+      "bytes": 5452,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.json",
+      "sha256": "81a373ed81e57a5dbb8a5d9b78cbd5c7fb3e2ca0771f81d79c9e3848ab302622",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.json",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "acceleration_metadata": {
+      "artifact": "acceleration_metadata",
+      "bytes": 1824,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_acceleration_model_metadata.json",
+      "sha256": "d5bf7434403a043d18ae081274abc29921623496b52a21221dfe3717834c839b",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_acceleration_model_metadata.json",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "validation_metrics": {
+      "artifact": "validation_metrics",
+      "bytes": 899,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_metrics.csv",
+      "sha256": "bf785163a79dbac23bd1e03ab87e1f86715fcdcf2282b92f5cb28471d2dabc6a",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_metrics.csv",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "reconciliation": {
+      "artifact": "reconciliation",
+      "bytes": 14126,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_reconciliation.json",
+      "sha256": "40cac342608c7b5223c3d490ac4db2477cbaa4691f26d0ca9c4e7c70a99d979a",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_reconciliation.json",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "paired_bootstrap": {
+      "artifact": "paired_bootstrap",
+      "bytes": 417,
+      "participant_level": false,
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_paired_physiorisk_bootstrap.csv",
+      "sha256": "84ed634dc5f2e1e5b5397bf0114318f62c2d4cb44bb93c589570b7fef6e192c8",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_paired_physiorisk_bootstrap.csv",
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    },
+    "manifest": {
+      "artifact": "manifest",
+      "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_artifact_manifest.json",
+      "canonical_path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_artifact_manifest.json",
+      "sha256": "258b2c99c66bf9c65efc4f89312a19b2a007cb7b9c70f7baf8b29318312f9537",
+      "bytes": 2482,
+      "participant_level": false,
+      "git_policy": "lightweight; eligible for repository checkpoint"
+    }
+  },
+  "scope_assertions": {
+    "CRP_included": false,
+    "CalibratedTotalRisk_refit": false,
+    "PhysioRisk_2axis_v2_altered": false,
+    "creatinine_assay_standardization_1999_2000_applied": false,
+    "historical_comparator_artifacts_overwritten": false,
+    "historical_submitted_artifacts_unchanged": true,
+    "journal_submission_packages_unchanged": true
+  }
+}

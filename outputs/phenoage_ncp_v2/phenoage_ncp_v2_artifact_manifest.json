@@ -1,0 +1,60 @@
+[
+  {
+    "artifact": "development_comparator",
+    "bytes": 333476,
+    "participant_level": true,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_development_comparator.parquet",
+    "rows": 13090,
+    "sha256": "c5575a31b94717813316af1d73f27115ef817decd5504cae910cbae3750fbfa8"
+  },
+  {
+    "artifact": "validation_comparator",
+    "bytes": 170414,
+    "participant_level": true,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_comparator.parquet",
+    "rows": 6739,
+    "sha256": "e3dcbde86a340a3a0d3e007b62d095521f820132137ee6ca201ef882162c4005"
+  },
+  {
+    "artifact": "unit_contract_csv",
+    "bytes": 1032,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.csv",
+    "sha256": "011ccb00d2a9ebc80b14bf54f6e5f5a6d340f9501ee8660e246dfca9fc2fa1dd"
+  },
+  {
+    "artifact": "unit_contract_json",
+    "bytes": 5452,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_unit_contract.json",
+    "sha256": "81a373ed81e57a5dbb8a5d9b78cbd5c7fb3e2ca0771f81d79c9e3848ab302622"
+  },
+  {
+    "artifact": "acceleration_metadata",
+    "bytes": 1824,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_acceleration_model_metadata.json",
+    "sha256": "d5bf7434403a043d18ae081274abc29921623496b52a21221dfe3717834c839b"
+  },
+  {
+    "artifact": "validation_metrics",
+    "bytes": 899,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_validation_metrics.csv",
+    "sha256": "bf785163a79dbac23bd1e03ab87e1f86715fcdcf2282b92f5cb28471d2dabc6a"
+  },
+  {
+    "artifact": "reconciliation",
+    "bytes": 14126,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_reconciliation.json",
+    "sha256": "40cac342608c7b5223c3d490ac4db2477cbaa4691f26d0ca9c4e7c70a99d979a"
+  },
+  {
+    "artifact": "paired_bootstrap",
+    "bytes": 417,
+    "participant_level": false,
+    "path": "/home/ubuntu2204/longevity/physiorisk_public/outputs/phenoage_ncp_v2/phenoage_ncp_v2_paired_physiorisk_bootstrap.csv",
+    "sha256": "84ed634dc5f2e1e5b5397bf0114318f62c2d4cb44bb93c589570b7fef6e192c8"
+  }
+]

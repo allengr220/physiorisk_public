@@ -1,0 +1,2 @@
+method,replicates_requested,replicates_completed,seed,PhysioRisk_2axis_v2_C_index,PhenoAge_NCP_acceleration_v2_C_index,delta_C_PhysioRisk_minus_acceleration,percentile_95CI_low,percentile_95CI_high,bootstrap_failure_count,eventless_redraw_count
+participant-level paired nonparametric bootstrap,2000,2000,20260821,0.663181826218942,0.654344247267949,0.008837578950992908,-0.011603816432397801,0.028924588788065912,0,0

@@ -1,0 +1,10 @@
+cycle,cycle_start_year,chemistry_source_file,canonical_column,selected_source_variable,source_unit,target_unit,conversion_factor,conversion_formula,formula_transform
+1999-2000,1999,LAB10AM.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2001-2002,2001,L40_B.XPT,LBXGLU,LBDSGLSI,mmol/L,mmol/L,1.0,LBDSGLSI,linear; no logarithm
+2003-2004,2003,L40_C.XPT,LBXGLU,LBDSGLSI,mmol/L,mmol/L,1.0,LBDSGLSI,linear; no logarithm
+2005-2006,2005,GLU_D.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2007-2008,2007,GLU_E.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2009-2010,2009,GLU_F.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2011-2012,2011,GLU_G.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2013-2014,2013,GLU_H.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm
+2015-2016,2015,GLU_I.XPT,LBXGLU,LBXGLU,mg/dL,mmol/L,0.05551,LBXGLU * 0.05551,linear; no logarithm

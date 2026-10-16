@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "model": "PhenoAge_NCP_v2",
+  "CRP_included": false,
+  "formula": "-19.907 - 0.0336*albumin_g_L + 0.0095*creatinine_umol_L + 0.1953*glucose_mmol_L - 0.0120*lymphocyte_pct + 0.0268*MCV + 0.3306*RDW + 0.00188*alkaline_phosphatase + 0.0554*WBC + 0.0804*age",
+  "published_input_contract": {
+    "albumin": {
+      "canonical_column": "LBXSAL",
+      "canonical_unit": "g/dL",
+      "coefficient_unit": "g/L",
+      "conversion": "LBXSAL * 10"
+    },
+    "creatinine": {
+      "canonical_column": "LBXSCR",
+      "canonical_unit": "mg/dL",
+      "coefficient_unit": "umol/L",
+      "conversion": "LBXSCR * 88.4"
+    },
+    "glucose": {
+      "canonical_column": "LBXGLU",
+      "canonical_unit": "cycle-specific; see glucose_cycle_contract",
+      "coefficient_unit": "mmol/L",
+      "conversion": "explicit cycle/source contract; linear term"
+    },
+    "lymphocyte_percentage": {
+      "canonical_column": "LBXLYPCT",
+      "canonical_unit": "%",
+      "coefficient_unit": "%",
+      "conversion": "none"
+    },
+    "mean_cell_volume": {
+      "canonical_column": "LBXMCV",
+      "canonical_unit": "fL",
+      "coefficient_unit": "fL",
+      "conversion": "none"
+    },
+    "red_cell_distribution_width": {
+      "canonical_column": "LBXRDW",
+      "canonical_unit": "%",
+      "coefficient_unit": "%",
+      "conversion": "none"
+    },
+    "alkaline_phosphatase": {
+      "canonical_column": "LBXSAPSI",
+      "canonical_unit": "U/L",
+      "coefficient_unit": "U/L",
+      "conversion": "none"
+    },
+    "white_blood_cell_count": {
+      "canonical_column": "LBXWBCSI",
+      "canonical_unit": "10^3/uL (numerically equal to 10^9/L)",
+      "coefficient_unit": "10^3/uL",
+      "conversion": "none"
+    },
+    "chronological_age": {
+      "canonical_column": "RIDAGEYR",
+      "canonical_unit": "years",
+      "coefficient_unit": "years",
+      "conversion": "none"
+    }
+  },
+  "glucose_cycle_contract": [
+    {
+      "cycle": "1999-2000",
+      "cycle_start_year": 1999,
+      "chemistry_source_file": "LAB10AM.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2001-2002",
+      "cycle_start_year": 2001,
+      "chemistry_source_file": "L40_B.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBDSGLSI",
+      "source_unit": "mmol/L",
+      "target_unit": "mmol/L",
+      "conversion_factor": 1.0,
+      "conversion_formula": "LBDSGLSI",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2003-2004",
+      "cycle_start_year": 2003,
+      "chemistry_source_file": "L40_C.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBDSGLSI",
+      "source_unit": "mmol/L",
+      "target_unit": "mmol/L",
+      "conversion_factor": 1.0,
+      "conversion_formula": "LBDSGLSI",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2005-2006",
+      "cycle_start_year": 2005,
+      "chemistry_source_file": "GLU_D.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2007-2008",
+      "cycle_start_year": 2007,
+      "chemistry_source_file": "GLU_E.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2009-2010",
+      "cycle_start_year": 2009,
+      "chemistry_source_file": "GLU_F.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2011-2012",
+      "cycle_start_year": 2011,
+      "chemistry_source_file": "GLU_G.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2013-2014",
+      "cycle_start_year": 2013,
+      "chemistry_source_file": "GLU_H.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    },
+    {
+      "cycle": "2015-2016",
+      "cycle_start_year": 2015,
+      "chemistry_source_file": "GLU_I.XPT",
+      "canonical_column": "LBXGLU",
+      "selected_source_variable": "LBXGLU",
+      "source_unit": "mg/dL",
+      "target_unit": "mmol/L",
+      "conversion_factor": 0.05551,
+      "conversion_formula": "LBXGLU * 0.05551",
+      "formula_transform": "linear; no logarithm"
+    }
+  ]
+}

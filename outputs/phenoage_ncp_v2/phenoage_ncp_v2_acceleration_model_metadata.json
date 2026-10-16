@@ -1,0 +1,68 @@
+{
+  "design_columns": [
+    "Intercept",
+    "C(RIAGENDR)[T.2.0]",
+    "cr(RIDAGEYR, df=4)[0]",
+    "cr(RIDAGEYR, df=4)[1]",
+    "cr(RIDAGEYR, df=4)[2]",
+    "cr(RIDAGEYR, df=4)[3]"
+  ],
+  "fit_cohort": "development only",
+  "formula": "cr(RIDAGEYR, df=4) + C(RIAGENDR)",
+  "imputation": {
+    "statistics": {
+      "LBXGLU": 91.6,
+      "LBXLYPCT": 29.7,
+      "LBXMCV": 90.1,
+      "LBXRDW": 12.5,
+      "LBXSAL": 4.3,
+      "LBXSAPSI": 69.0,
+      "LBXSCR": 0.8,
+      "LBXWBCSI": 6.6
+    },
+    "strategy": "development median",
+    "values_required_imputation": {
+      "development:LBXGLU": 0,
+      "development:LBXLYPCT": 0,
+      "development:LBXMCV": 0,
+      "development:LBXRDW": 0,
+      "development:LBXSAL": 0,
+      "development:LBXSAPSI": 0,
+      "development:LBXSCR": 0,
+      "development:LBXWBCSI": 0,
+      "validation:LBXGLU": 0,
+      "validation:LBXLYPCT": 0,
+      "validation:LBXMCV": 0,
+      "validation:LBXRDW": 0,
+      "validation:LBXSAL": 0,
+      "validation:LBXSAPSI": 0,
+      "validation:LBXSCR": 0,
+      "validation:LBXWBCSI": 0
+    }
+  },
+  "linear_regression_coefficients": {
+    "C(RIAGENDR)[T.2.0]": -0.13617654458600523,
+    "Intercept": 0.0,
+    "cr(RIDAGEYR, df=4)[0]": -3.150250446906048,
+    "cr(RIDAGEYR, df=4)[1]": -1.109624516289198,
+    "cr(RIDAGEYR, df=4)[2]": 1.0154610318005588,
+    "cr(RIDAGEYR, df=4)[3]": 3.2444139313946843
+  },
+  "linear_regression_intercept": -8.381860564815787,
+  "model": "PhenoAge_NCP_acceleration_v2",
+  "source_score": "PhenoAge_NCP_v2",
+  "spline_state": [
+    {
+      "all_knots": [
+        18.0,
+        40.333333333333336,
+        62.66666666666667,
+        85.0
+      ],
+      "class": "CR",
+      "constraints": null,
+      "name": "_patsy_stobj0__cr__"
+    }
+  ],
+  "validation_transform": "frozen development design and regression"
+}
